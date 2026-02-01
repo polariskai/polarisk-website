@@ -1,66 +1,36 @@
 # Polarisk.ai Website
 
-This repository contains the landing page for polarisk.ai domain.
+A simple landing page for polarisk.ai
 
-## Current Status
+## Overview
 
-The website currently displays a simple "Coming Soon" page while the full website is under development.
-
-## Project Structure
-
-```
-polarisk-website/
-├── css/
-│   └── styles.css
-├── js/
-│   └── script.js
-├── favicon.ico
-├── index.html
-└── README.md
-```
+This repository contains a minimal "Coming Soon" landing page with a clean, responsive design.
 
 ## Features
 
-- Responsive design that works on mobile and desktop
-- Countdown timer to anticipated launch date
+- Responsive design for all devices
 - Simple, clean UI with animations
-- Contact email link
+- Contact information
 
-## Development
+## Local Development
 
-### Local Setup
+```bash
+# Clone the repository
+git clone https://github.com/polariskai/polarisk-website.git
+cd polarisk-website
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd polarisk-website
-   ```
+# Run a local server
+python -m http.server 8000
+# OR with Node.js
+npx http-server
+```
 
-2. Open the project in your preferred code editor
-
-3. To test locally, you can use any simple HTTP server:
-   ```
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js (with http-server package)
-   npx http-server
-   ```
-
-4. Open your browser and navigate to `http://localhost:8000` (or the port specified by your HTTP server)
+Visit `http://localhost:8000` in your browser.
 
 ## Deployment
 
-This site can be deployed to any static site hosting service such as:
-- GitHub Pages
-- Netlify
-- Vercel
-- AWS S3 + CloudFront
-
-## Future Development
-
-The full website will be developed and replace this landing page when ready.
+This site is deployed using GitHub Pages.
 
 ## License
 
-All rights reserved. This code is proprietary to Polarisk.ai.
+All rights reserved.
