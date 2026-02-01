@@ -1,0 +1,131 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%);
+    color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.content {
+    text-align: center;
+    max-width: 800px;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.logo h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.message p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #cccccc;
+}
+
+
+.contact {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #aaaaaa;
+}
+
+.contact a {
+    color: #4facfe;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover {
+    color: #00f2fe;
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        text-shadow: 0 0 10px rgba(79, 172, 254, 0);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(79, 172, 254, 0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2.5rem;
+    }
+    
+    .message h2 {
+        font-size: 2rem;
+    }
+    
+    .message p {
+        font-size: 1rem;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .message h2 {
+        font-size: 1.5rem;
+    }
+    
+}
