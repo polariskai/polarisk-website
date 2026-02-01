@@ -57,6 +57,23 @@ body {
     color: var(--color-navy);
 }
 
+.nav-contact-btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--color-gold);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-contact-btn:hover {
+    background-color: var(--color-gold-dark);
+    transform: translateY(-1px);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
