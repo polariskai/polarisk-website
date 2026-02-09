@@ -383,6 +383,377 @@ body {
     }
 }
 
+/* =============================================
+   INVESTOR PAGE STYLES
+   ============================================= */
+
+/* Investor Hero */
+.inv-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 4rem;
+    background-color: var(--color-cream);
+    text-align: center;
+}
+
+.inv-hero-inner {
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.inv-hero-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem;
+}
+
+.inv-hero-title {
+    font-size: 3.25rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.inv-hero-subtitle {
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inv-hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.inv-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inv-stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-navy);
+}
+
+.inv-stat-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 0.25rem;
+}
+
+/* Shared investor section styles */
+.inv-section {
+    padding: 6rem 2rem;
+}
+
+.inv-section--navy {
+    background-color: var(--color-navy);
+}
+
+.inv-section--cream {
+    background-color: var(--color-cream);
+}
+
+.inv-section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.inv-section-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.inv-section-title--dark {
+    color: var(--color-navy);
+}
+
+.inv-section-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+}
+
+.inv-section-desc--dark {
+    color: var(--color-text-light);
+}
+
+/* CTA button */
+.inv-cta-btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background-color: var(--color-gold);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.inv-cta-btn:hover {
+    background-color: var(--color-gold-dark);
+    transform: translateY(-2px);
+}
+
+.inv-cta-btn--outline {
+    background-color: transparent;
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+}
+
+.inv-cta-btn--outline:hover {
+    background-color: var(--color-gold);
+    color: #ffffff;
+}
+
+/* Video section */
+.inv-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inv-video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.inv-video-placeholder-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(184, 150, 75, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.inv-video-placeholder-icon svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 3px;
+}
+
+.inv-video-placeholder:hover .inv-video-placeholder-icon {
+    transform: scale(1.1);
+    background: rgba(184, 150, 75, 0.25);
+}
+
+.inv-video-placeholder-text {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.inv-video-placeholder-sub {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Demo access section */
+.inv-demo-access {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.inv-demo-text .inv-section-title {
+    text-align: left;
+}
+
+.inv-demo-text .inv-section-desc {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 2rem;
+}
+
+.inv-demo-card {
+    background: var(--color-navy);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(26, 26, 46, 0.15);
+}
+
+.inv-demo-card-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.75rem 1rem;
+    background: var(--color-navy-light);
+}
+
+.inv-demo-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.inv-demo-dot--red { background: #ff5f57; }
+.inv-demo-dot--yellow { background: #febc2e; }
+.inv-demo-dot--green { background: #28c840; }
+
+.inv-demo-card-url {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 0.5rem;
+    font-family: monospace;
+}
+
+.inv-demo-card-body {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.inv-demo-line {
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.inv-demo-line--wide { width: 100%; }
+.inv-demo-line--medium { width: 75%; }
+.inv-demo-line--narrow { width: 50%; }
+
+/* Pitch deck section */
+.inv-deck-actions {
+    margin-bottom: 2.5rem;
+}
+
+.inv-deck-embed {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inv-deck-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+
+/* Team section */
+.inv-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.inv-team-card {
+    background: #ffffff;
+    border: 1px solid var(--color-cream-dark);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inv-team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(26, 26, 46, 0.1);
+}
+
+.inv-team-role {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-gold);
+    background: rgba(184, 150, 75, 0.1);
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.inv-team-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+}
+
+.inv-team-details {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.inv-team-details li {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+.inv-team-logos {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    letter-spacing: 1px;
+}
+
+/* Final CTA */
+.inv-final-cta {
+    padding: 6rem 2rem;
+}
+
+.inv-final-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
 /* Responsive styles */
 @media (max-width: 968px) {
     .hero {
@@ -413,6 +784,27 @@ body {
         max-width: 400px;
         margin: 0 auto;
     }
+
+    /* Investor responsive */
+    .inv-demo-access {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .inv-demo-text .inv-section-title,
+    .inv-demo-text .inv-section-desc {
+        text-align: center;
+    }
+
+    .inv-demo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inv-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -440,6 +832,24 @@ body {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+    }
+
+    /* Investor responsive */
+    .inv-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .inv-hero-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .inv-section-title,
+    .inv-section-title--dark {
+        font-size: 1.85rem;
+    }
+
+    .inv-stat-value {
+        font-size: 1.75rem;
     }
 }
 
@@ -483,5 +893,46 @@ body {
 
     .contact-email {
         font-size: 1.25rem;
+    }
+
+    /* Investor responsive */
+    .inv-hero {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .inv-hero-title {
+        font-size: 1.85rem;
+    }
+
+    .inv-hero-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .inv-hero-stats {
+        gap: 1.5rem;
+    }
+
+    .inv-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .inv-section {
+        padding: 4rem 1rem;
+    }
+
+    .inv-section-title,
+    .inv-section-title--dark {
+        font-size: 1.5rem;
+    }
+
+    .inv-team-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin: 0 auto 2rem;
+    }
+
+    .inv-final-cta-actions {
+        flex-direction: column;
+        align-items: center;
     }
 }
