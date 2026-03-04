@@ -40,3 +40,6 @@ build/
 Regulon-Polarisk.pdf
 *.pdf
 PitchDeck/
+
+#Next.js build output
+.next/
