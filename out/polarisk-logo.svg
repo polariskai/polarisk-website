@@ -1,0 +1,108 @@
+<svg
+  width="300"
+  height="300"
+  viewBox="0 0 300 300"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="150"
+    cy="150"
+    r="120"
+    stroke="url(#outerRingGradient)"
+    stroke-width="2"
+    fill="none"
+    opacity="0.6"
+  />
+
+  <circle
+    cx="150"
+    cy="150"
+    r="100"
+    stroke="url(#innerRingGradient)"
+    stroke-width="1.5"
+    fill="none"
+    opacity="0.4"
+  />
+
+  <line
+    x1="70"
+    y1="230"
+    x2="230"
+    y2="70"
+    stroke="url(#lineGradient)"
+    stroke-width="1.5"
+    opacity="0.5"
+  />
+
+  <path
+    d="M 150 30 L 160 150 L 150 155 L 140 150 Z"
+    fill="url(#northGradient)"
+  />
+
+  <path
+    d="M 150 270 L 160 150 L 150 155 L 140 150 Z"
+    fill="url(#southGradient)"
+    opacity="0.7"
+  />
+
+  <circle
+    cx="150"
+    cy="150"
+    r="12"
+    fill="url(#centerGradient)"
+  />
+
+  <g>
+    <circle
+      cx="225"
+      cy="75"
+      r="8"
+      fill="white"
+    />
+    <circle
+      cx="225"
+      cy="75"
+      r="12"
+      fill="white"
+      opacity="0.3"
+    />
+  </g>
+
+  <defs>
+    <linearGradient id="northGradient" x1="150" y1="30" x2="150" y2="155">
+      <stop offset="0%" stop-color="#60d5f4" />
+      <stop offset="50%" stop-color="#4faccd" />
+      <stop offset="100%" stop-color="#3d8fb3" />
+    </linearGradient>
+
+    <linearGradient id="southGradient" x1="150" y1="270" x2="150" y2="150">
+      <stop offset="0%" stop-color="#1a2433" />
+      <stop offset="100%" stop-color="#2d3f5f" />
+    </linearGradient>
+
+    <radialGradient id="centerGradient">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#e0e7ff" />
+      <stop offset="100%" stop-color="#c7d2fe" />
+    </radialGradient>
+
+    <linearGradient id="outerRingGradient">
+      <stop offset="0%" stop-color="#4a5568" />
+      <stop offset="50%" stop-color="#718096" />
+      <stop offset="100%" stop-color="#4a5568" />
+    </linearGradient>
+
+    <linearGradient id="innerRingGradient">
+      <stop offset="0%" stop-color="#2d3748" />
+      <stop offset="50%" stop-color="#4a5568" />
+      <stop offset="100%" stop-color="#2d3748" />
+    </linearGradient>
+
+    <linearGradient id="lineGradient" x1="70" y1="230" x2="230" y2="70">
+      <stop offset="0%" stop-color="#4a5568" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#718096" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#4a5568" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+</svg>
