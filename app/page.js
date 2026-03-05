@@ -12,11 +12,14 @@ import {
   LineChart,
   Lock,
   Search,
+  Network,
   Shield,
   Zap,
+  Cog,
 } from "lucide-react";
 
-const polariskLogo = "/polarisk-logo-2.png";
+// const polariskLogo = "/polarisk-logo-2.png";
+const polariskLogo = "/polarisk-logo.svg";
 
 const NAV_LINKS = [
   { label: "Product", href: "#" },
@@ -34,22 +37,22 @@ const FEATURES = [
       "Multi-agent AI that autonomously investigates suspicious activity, surfaces connections, and builds evidence chains.",
   },
   {
+    icon: Network,
+    label: "Entity Graph Intelligence",
+    description:
+      "Cross-reference entities across jurisdictions, accounts, beneficial ownership, and networks with graph-powered intelligence that catches what rules miss.",
+  },
+  {
     icon: Zap,
-    label: "Real-Time Detection",
+    label: "Real-Time Alert Ingestion",
     description:
-      "Sub-second alert ingestion across thousands of transactions. Never miss a signal in the noise.",
+      "Sub-second processing across thousands of daily transactions. Every alert scored, contextualized, and queued before it reaches an analyst.",
   },
   {
-    icon: Search,
-    label: "Deep Entity Resolution",
+    icon: Cog,
+    label: "Stay in Control",
     description:
-      "Cross-reference entities across jurisdictions, accounts, and networks with graph-powered intelligence.",
-  },
-  {
-    icon: LineChart,
-    label: "Risk Scoring Engine",
-    description:
-      "Adaptive ML models that learn from analyst decisions to continuously improve alert precision.",
+      "Adaptive, yet Configurable AI Agents that learn from analyst decisions to continuously improve alert precision. You call the shots, not the AI.",
   },
   {
     icon: Globe,
@@ -61,7 +64,7 @@ const FEATURES = [
     icon: Lock,
     label: "Audit-Ready Compliance",
     description:
-      "Every decision logged, every workflow traceable. Built to satisfy regulators on day one.",
+      "Every decision logged, every workflow traceable. Built to satisfy regulators on Day 1.",
   },
 ];
 
@@ -209,6 +212,10 @@ export default function HomePage() {
 
   const handleGetStarted = () => {
     window.open("https://demo.polarisk.ai", "_blank", "noopener,noreferrer");
+  };
+
+  const handleContactUs = () => {
+    window.open("mailto:contact@polarisk.ai", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -420,7 +427,7 @@ export default function HomePage() {
                   "Create and configure your own agents",
                   "Set your own risk thresholds",
                   "Ground agents in your policies and test run them in a sandbox",
-                  "Improve from analyst decisions",
+                  "Improve your results with analyst-in-the-loop feedback",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-400" />
@@ -432,7 +439,7 @@ export default function HomePage() {
                 onClick={handleGetStarted}
                 className="group mt-10 flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
               >
-                Try Polarisk free
+                Demo
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </button>
             </div>
@@ -468,9 +475,14 @@ export default function HomePage() {
                   <div className="space-y-3">
                     <div className="rounded-lg border border-white/[0.06] bg-[#0b1019] p-3">
                       <div className="mb-2 flex items-center justify-between">
-                        <span className="text-[11px] font-medium text-white/80">
-                          Checklist Analysis
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px] font-medium text-white/80">
+                            Checklist Analysis
+                          </span>
+                          <span className="flex h-4 w-4 items-center justify-center rounded-full border border-white/[0.14] text-[10px] leading-none text-white/55">
+                            +
+                          </span>
+                        </div>
                         <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-emerald-300">
                           Parallel
                         </span>
@@ -481,28 +493,48 @@ export default function HomePage() {
                           "Behavioral Analysis",
                           "Peer Comparison",
                           "Compliance Screening",
-                        ].map((agent) => (
-                          <div
-                            key={agent}
-                            className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-2"
-                          >
-                            <div className="text-[10px] font-medium text-white/75">
-                              {agent}
+                        ].map((agent) => {
+                          const isSelected = agent === "Compliance Screening";
+                          return (
+                            <div
+                              key={agent}
+                              className={`rounded-md px-2 py-2 ${
+                                isSelected
+                                  ? "border border-blue-400/20 bg-blue-500/[0.08]"
+                                  : "border border-white/[0.06] bg-white/[0.03]"
+                              }`}
+                            >
+                              <div
+                                className={`text-[10px] font-medium ${
+                                  isSelected ? "text-white/85" : "text-white/75"
+                                }`}
+                              >
+                                {agent}
+                              </div>
+                              <div
+                                className={`mt-1 flex items-center gap-1.5 text-[9px] ${
+                                  isSelected ? "text-blue-200/70" : "text-white/35"
+                                }`}
+                              >
+                                <ProviderLogo provider="OpenAI" />
+                                <span>gpt-4o-mini</span>
+                              </div>
                             </div>
-                            <div className="mt-1 flex items-center gap-1.5 text-[9px] text-white/35">
-                              <ProviderLogo provider="OpenAI" />
-                              <span>gpt-4o-mini</span>
-                            </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
 
                     <div className="rounded-lg border border-white/[0.06] bg-[#0b1019] p-3">
                       <div className="mb-2 flex items-center justify-between">
-                        <span className="text-[11px] font-medium text-white/80">
-                          Network Analysis
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px] font-medium text-white/80">
+                            Network Analysis
+                          </span>
+                          <span className="flex h-4 w-4 items-center justify-center rounded-full border border-white/[0.14] text-[10px] leading-none text-white/55">
+                            +
+                          </span>
+                        </div>
                         <span className="rounded bg-blue-500/15 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-blue-300">
                           Sequential
                         </span>
@@ -547,8 +579,9 @@ export default function HomePage() {
                         compliance-screening
                       </div>
                     </div>
-                    <span className="rounded border border-emerald-400/20 bg-emerald-500/10 px-2 py-0.5 text-[9px] text-emerald-300">
-                      OpenAI gpt-4o-mini
+                    <span className="inline-flex items-center gap-1.5 rounded border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[9px] text-emerald-300">
+                      <ProviderLogo provider="OpenAI" />
+                      <span>gpt-4o-mini</span>
                     </span>
                   </div>
 
@@ -880,7 +913,7 @@ llm:
                 onClick={handleGetStarted}
                 className="group mt-10 flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
               >
-                Try Polarisk free
+                Demo
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </button>
             </div>
@@ -1036,7 +1069,7 @@ llm:
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
-              onClick={handleGetStarted}
+              onClick={handleContactUs}
               className="text-[13px] text-white/40 transition-colors hover:text-white/70"
             >
               Talk to sales →

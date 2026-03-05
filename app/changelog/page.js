@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Sparkles } from "lucide-react";
@@ -173,7 +174,7 @@ function ChangelogPost({ post, index }) {
   );
 }
 
-export default function ChangelogPage() {
+function ChangelogPageContent() {
   const searchParams = useSearchParams();
   const parsed = Number(searchParams.get("page"));
   const pageNumber = Number.isNaN(parsed) || parsed < 1 ? 1 : parsed;
@@ -216,5 +217,13 @@ export default function ChangelogPage() {
         {renderPagination(pageNumber)}
       </div>
     </main>
+  );
+}
+
+export default function ChangelogPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-[#080c14]" />}>
+      <ChangelogPageContent />
+    </Suspense>
   );
 }
