@@ -1,0 +1,18 @@
+<svg
+  width="300"
+  height="300"
+  viewBox="0 0 300 300"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle cx="150" cy="150" r="120" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6" />
+  <circle cx="150" cy="150" r="100" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4" />
+  <line x1="70" y1="230" x2="230" y2="70" stroke="#ffffff" stroke-width="1.5" opacity="0.5" />
+  <path d="M 150 30 L 160 150 L 150 155 L 140 150 Z" fill="#ffffff" />
+  <path d="M 150 270 L 160 150 L 150 155 L 140 150 Z" fill="#ffffff" opacity="0.7" />
+  <circle cx="150" cy="150" r="12" fill="#ffffff" />
+  <g>
+    <circle cx="225" cy="75" r="8" fill="#ffffff" />
+    <circle cx="225" cy="75" r="12" fill="#ffffff" opacity="0.3" />
+  </g>
+</svg>
