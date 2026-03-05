@@ -29,3 +29,6 @@ npm run start
 
 - Main brand assets live in `public/`.
 - Current homepage uses pitch-deck-aligned messaging with a sleek dark UI theme.
+
+## Github action 
+Github actions is setup for Deployment to Live website
