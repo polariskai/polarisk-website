@@ -516,8 +516,8 @@ export default function HomePage() {
                                   isSelected ? "text-blue-200/70" : "text-white/35"
                                 }`}
                               >
-                                <ProviderLogo provider="OpenAI" />
-                                <span>gpt-4o-mini</span>
+                                <ProviderLogo provider="Anthropic" />
+                                <span>sonnet-4.6</span>
                               </div>
                             </div>
                           );
@@ -580,8 +580,8 @@ export default function HomePage() {
                       </div>
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-[9px] text-emerald-300">
-                      <ProviderLogo provider="OpenAI" />
-                      <span>gpt-4o-mini</span>
+                      <ProviderLogo provider="Anthropic" />
+                      <span>sonnet-4.6</span>
                     </span>
                   </div>
 
@@ -596,7 +596,7 @@ export default function HomePage() {
                           title={provider}
                           aria-label={provider}
                           className={`flex h-8 items-center justify-center rounded ${
-                            provider === "OpenAI"
+                            provider === "Anthropic"
                               ? "border border-blue-400/30 bg-blue-500/15 text-blue-300"
                               : "border border-white/[0.06] bg-white/[0.03] text-white/45"
                           }`}
@@ -610,7 +610,7 @@ export default function HomePage() {
                       Model
                     </div>
                     <div className="rounded border border-blue-400/30 bg-blue-500/10 px-2 py-1.5 text-[10px] text-blue-200">
-                      gpt-4o-mini
+                      sonnet-4.6
                     </div>
 
                     <div className="mt-2 flex items-center justify-between text-[10px] text-white/45">
