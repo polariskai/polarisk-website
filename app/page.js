@@ -23,10 +23,11 @@ const polariskLogo = "/polarisk-logo.svg";
 
 const NAV_LINKS = [
   { label: "Product", href: "#" },
-  { label: "Customers", href: "#" },
-  { label: "Pricing", href: "#" },
   { label: "Changelog", href: "/changelog" },
-  { label: "Docs", href: "#" },
+  { label: "About", href: "/about" },
+  // { label: "Customers", href: "#" },
+  // { label: "Pricing", href: "#" },
+  // { label: "Docs", href: "#" },
 ];
 
 const FEATURES = [
@@ -235,7 +236,7 @@ export default function HomePage() {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-2.5">
             <img
-              src={polariskLogo}
+              src="/polarisk-logo-white.svg"
               alt="Polarisk"
               className="h-7 w-7 object-contain"
             />
@@ -299,7 +300,7 @@ export default function HomePage() {
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
           Now in customer discovery - Polarisk.ai
-          <ChevronRight className="h-3 w-3 opacity-60" />
+          {/* <ChevronRight className="h-3 w-3 opacity-60" /> */}
         </div>
 
         <div
@@ -1034,7 +1035,7 @@ llm:
             }}
           />
           <img
-            src={polariskLogo}
+            src="/polarisk-logo-white.svg"
             alt="Polarisk"
             className="relative mx-auto mb-6 h-16 w-16 object-contain"
             style={{ filter: "drop-shadow(0 0 24px rgba(59,130,246,0.6))" }}
@@ -1072,7 +1073,7 @@ llm:
               onClick={handleContactUs}
               className="text-[13px] text-white/40 transition-colors hover:text-white/70"
             >
-              Talk to sales →
+              contact@polarisk.ai
             </button>
           </div>
           <p className="relative mt-6 text-[11px] text-white/25">

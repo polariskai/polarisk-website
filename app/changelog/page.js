@@ -7,108 +7,93 @@ import { ArrowLeft, ArrowRight, CalendarDays, Sparkles } from "lucide-react";
 
 const POSTS = [
   {
-    date: "March 4, 2026",
-    title: "Verdict-agent framework integration",
+    date: "Mar 5, 2026",
+    title: "Website design refreshed",
     sections: [
       {
-        heading: "Agent execution graph and analysis summary",
-        body: "Alert detail now pulls from dedicated APIs for analysis summary and execution graph so the frontend can render phase-level progress and final verdict context consistently across demo and live modes.",
+        heading: "Modernized visual system and layout",
+        body: "The website received a full design refresh with improved visual hierarchy, updated spacing, and clearer section flow to better communicate product value and user outcomes.",
       },
       {
-        heading: "Agent-level summary and deep detail APIs",
-        body: "Added dedicated summary and detail endpoints per agent so ownership, transaction, sanctions, and risk analysis can be inspected independently with richer findings and audit metadata.",
+        heading: "Sharper product storytelling",
+        body: "Homepage content and interaction patterns were refined to present alert triage, AI analysis, and surveillance workflows in a more intuitive and professional product narrative.",
       },
     ],
     fixes: [
-      "Live mode now returns typed API errors for verdict endpoints instead of opaque failures.",
-      "Demo mode maps multi-agent case sections into consistent API shapes for UI rendering.",
-      "Deprecated the legacy `/api/analyze` flow in favor of alert-scoped verdict APIs.",
-    ],
-  },
-  {
-    date: "February 26, 2026",
-    title: "Streaming copilot chat proxy",
-    sections: [
-      {
-        heading: "Server-sent event chat streaming",
-        body: "The chat endpoint now proxies token streams from the Python LangGraph backend via SSE so analysts receive incremental responses in real time rather than waiting for full completions.",
-      },
-    ],
-    fixes: [
-      "Improved error payload passthrough from backend chat failures for faster debugging.",
-      "Added resilient fallback to `VERDICT_API_URL` / `AGENT_API_URL` for local and hosted environments.",
+      "Improved consistency across section borders, card shadows, and typographic scale.",
+      "Enhanced readability for dense product UI mockups across viewport sizes.",
+      "Standardized supporting microcopy to align with enterprise compliance messaging.",
     ],
   },
   {
     date: "February 18, 2026",
-    title: "Role-based work panel and demo login",
+    title: "Surveillance Workbench launched",
+    preview: "surveillance",
     sections: [
       {
-        heading: "Role-tailored work panel APIs",
-        body: "Work panel responses now branch by analyst, manager, and audit roles, enabling role-aware queues, team metrics, and compliance snapshots in one endpoint.",
+        heading: "Orchestrated investigation workflow",
+        body: "Introduced the Surveillance Workbench to coordinate multi-step analysis flows, combine agent outputs, and persist analyst-ready investigation runs in a single workspace.",
       },
       {
-        heading: "Fast demo session switching",
-        body: "Added role-based demo login tokens for analyst, manager, and admin personas to simplify onboarding and scripted demos.",
+        heading: "Parallel intelligence execution",
+        body: "The workbench now supports parallel task orchestration for KYC intelligence, behavioral analysis, peer comparison, and compliance screening to reduce investigation turnaround time.",
       },
     ],
     fixes: [
-      "Standardized role query defaults so analyst data remains the safe fallback.",
-      "Improved demo user lookup handling for missing-role scenarios.",
+      "Added workflow save controls and token budget visibility to improve operational planning.",
+      "Improved card-level status readability for task sequencing and model attribution.",
     ],
   },
   {
     date: "February 10, 2026",
-    title: "Dashboard intelligence APIs expanded",
+    title: "Dashboard released",
     sections: [
       {
-        heading: "Risk posture, typologies, and pattern feeds",
-        body: "Dashboard endpoints now expose risk posture, top typologies, and emerging pattern cards, matching the insights shown in the UI overview panels.",
-      },
-      {
-        heading: "Alert case-health and volume telemetry",
-        body: "Added dedicated APIs for alert funnel health and 14-day alert volume trends, including anomaly flags and priority distribution signals.",
+        heading: "Operations overview for compliance teams",
+        body: "Delivered the first dashboard experience to give compliance leaders a consolidated view of open alerts, investigation health, and risk posture across active cases.",
       },
     ],
     fixes: [
-      "Kept demo/live parity for dashboard contracts while live services are phased in.",
-      "Improved payload consistency to reduce frontend adapter logic.",
+      "Improved KPI card structure for faster executive and analyst-level scanning.",
+      "Refined metric groupings to better match triage and case management workflows.",
     ],
   },
   {
     date: "February 3, 2026",
-    title: "Alert queue filtering and sorting",
+    title: "AI Chatbot added",
+    preview: "chatbot",
     sections: [
       {
-        heading: "Advanced alert list query controls",
-        body: "Alert list API now supports status, priority, type, assignee, and sort controls so teams can triage with faster precision from the queue.",
+        heading: "Conversational alert intelligence",
+        body: "Added an AI Chatbot experience that allows analysts to query alert context in natural language and receive structured, evidence-based explanations for faster decisions.",
       },
       {
-        heading: "Assigned-to-me matching improvements",
-        body: "Added `assignedTo=me` behavior with Clerk user mapping to route alerts to the signed-in analyst experience.",
+        heading: "Case-specific copilot context",
+        body: "Chat sessions now anchor to a selected alert so risk summaries, transaction patterns, and recommendation prompts remain scoped to active investigations.",
       },
     ],
     fixes: [
-      "Priority ranking sort order now aligns with high/medium/low investigator expectations.",
-      "Reduced mismatch cases between display names and mapped user identities.",
+      "Improved response formatting for better readability in analyst workflows.",
+      "Reduced latency for common prompts by optimizing context retrieval paths.",
     ],
   },
   {
     date: "January 27, 2026",
-    title: "Context and tags normalization",
+    title: "Alert analysis and case management",
+    preview: "caseManagement",
     sections: [
       {
-        heading: "Normalized alert context payloads",
-        body: "Context responses now normalize backend variants into stable context groups, entries, and transaction lists so UI rendering remains deterministic.",
+        heading: "Unified alert triage experience",
+        body: "Released alert analysis and case management capabilities to centralize queue prioritization, ownership assignment, and critical-risk tracking within a single operational view.",
       },
       {
-        heading: "Tag enrichment for typology hints",
-        body: "Alert tags now include category, severity, and tooltip metadata, helping analysts understand why a typology marker appears.",
+        heading: "Investigation-ready case handoff",
+        body: "Analysts can now move high-priority alerts into managed case workflows with improved continuity between triage, investigation, and reporting steps.",
       },
     ],
     fixes: [
-      "Added safe value coercion for sparse context records.",
-      "Improved default labels for unknown fields to avoid empty UI states.",
+      "Added clearer priority signal treatment to reduce high-risk alert misses.",
+      "Improved queue controls to support faster filtering and analyst action.",
     ],
   },
 ];
@@ -142,6 +127,125 @@ function renderPagination(pageNumber) {
 }
 
 function ChangelogPost({ post, index }) {
+  const renderPreview = () => {
+    if (!post.preview) {
+      return null;
+    }
+
+    if (post.preview === "caseManagement") {
+      return (
+        <div
+          className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-[#0b1019]"
+          style={{
+            boxShadow: "0 0 80px rgba(37,99,235,0.15), 0 0 0 1px rgba(255,255,255,0.04)",
+          }}
+        >
+          <div className="border-b border-white/[0.06] px-4 py-3 text-[12px] text-white/60">
+            app.polarisk.ai - Meridian Bank Dashboard
+          </div>
+          <div className="grid gap-0 md:grid-cols-[1fr_2fr]">
+            <div className="border-b border-white/[0.06] bg-[#0d1422] p-4 md:border-b-0 md:border-r">
+              <div className="space-y-2 text-[12px] text-white/35">
+                <div>Dashboard</div>
+                <div className="rounded bg-blue-500/15 px-2 py-1 text-blue-300">Alert Queue 24</div>
+                <div>Investigations</div>
+                <div>Reports</div>
+                <div>Settings</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <div className="text-[13px] font-semibold text-white/90">Alert Queue</div>
+                  <div className="text-[11px] text-white/35">24 open - 8 high priority</div>
+                </div>
+                <span className="rounded border border-white/[0.08] bg-white/[0.03] px-2 py-1 text-[11px] text-white/45">
+                  Filter
+                </span>
+              </div>
+              <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-3 text-[12px] text-white/65">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-white/80">ALT-2847</span>
+                  <span className="rounded bg-red-500/15 px-2 py-0.5 text-[10px] text-red-300">Critical</span>
+                </div>
+                <div className="mt-1 text-white/45">Rapid funds movement - ACH</div>
+                <div className="mt-1 text-white/35">Owner: Lena Vasquez</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (post.preview === "chatbot") {
+      return (
+        <div
+          className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-[#0d1422]"
+          style={{ boxShadow: "0 0 40px rgba(37,99,235,0.1)" }}
+        >
+          <div className="flex items-center gap-2 border-b border-white/[0.05] px-4 py-3">
+            <span className="text-[12px] font-medium text-white/75">AI Copilot - ALT-2847</span>
+            <span className="ml-auto h-2 w-2 rounded-full bg-green-400" />
+          </div>
+          <div className="space-y-4 p-4">
+            <div className="flex justify-end">
+              <div className="max-w-[75%] rounded-xl rounded-br-sm border border-blue-500/20 bg-blue-600/20 px-3.5 py-2.5 text-[12px] text-blue-200">
+                Summarize the risk factors for this alert
+              </div>
+            </div>
+            <div className="max-w-[85%] rounded-xl rounded-tl-sm border border-white/[0.06] bg-white/[0.04] px-3.5 py-2.5 text-[12px] leading-relaxed text-white/60">
+              <span className="mb-1 block font-medium text-white/80">ALT-2847 risk summary</span>
+              Lena Vasquez moved $84,400 via ACH across 6 transactions in 72 hours, consistent
+              with structuring behavior.
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (post.preview === "surveillance") {
+      return (
+        <div
+          className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-[#0d1422]"
+          style={{ boxShadow: "0 0 40px rgba(37,99,235,0.1)" }}
+        >
+          <div className="flex items-center justify-between border-b border-white/[0.05] px-4 py-3">
+            <span className="text-[12px] font-medium text-white/80">Surveillance Workbench</span>
+            <span className="rounded-md border border-blue-400/25 bg-blue-500/10 px-2.5 py-1 text-[10px] text-blue-300">
+              Save workflow
+            </span>
+          </div>
+          <div className="grid gap-3 p-4 text-[11px] text-white/55">
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2">
+              <div className="mb-1 flex items-center justify-between text-white/35">
+                <span>Token budget</span>
+                <span>26k / 60k</span>
+              </div>
+              <div className="h-1.5 rounded-full bg-white/[0.08]">
+                <div className="h-full w-[43%] rounded-full bg-gradient-to-r from-blue-400 to-blue-300" />
+              </div>
+            </div>
+            <div className="grid gap-2 md:grid-cols-2">
+              {[
+                "Checklist Analysis + PARALLEL",
+                "KYC Intelligence - sonnet-4.6",
+                "Behavioral Analysis - sonnet-4.6",
+                "Peer Comparison - sonnet-4.6",
+                "Compliance Screening - sonnet-4.6",
+              ].map((item) => (
+                <div key={item} className="rounded border border-white/[0.06] bg-white/[0.02] px-2.5 py-2">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <article
       className="reveal-on-scroll rounded-xl border border-white/[0.08] bg-[#0d1420]/85 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur"
@@ -152,6 +256,7 @@ function ChangelogPost({ post, index }) {
         {post.date}
       </div>
       <h2 className="text-2xl font-semibold tracking-tight text-white">{post.title}</h2>
+      {renderPreview()}
       <div className="mt-6 space-y-5">
         {post.sections.map((section) => (
           <section key={section.heading}>
@@ -195,7 +300,8 @@ function ChangelogPageContent() {
             <ArrowLeft className="h-3.5 w-3.5" />
             Polarisk
           </Link>
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs text-blue-200/90">
+          {/* add small gap to the left */}
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs text-blue-200/90 ml-2">
             <Sparkles className="h-3.5 w-3.5" />
             Product updates
           </div>
@@ -205,7 +311,7 @@ function ChangelogPageContent() {
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/50">
             Ongoing improvements to the Polarisk investigation platform. Entries on this page are generated from current capabilities and APIs in the `polarisk-ui` application.
           </p>
-          <p className="mt-4 text-xs text-white/35">Page {pageNumber}</p>
+          {/* <p className="mt-4 text-xs text-white/35">Page {pageNumber}</p> */}
         </header>
 
         <section className="space-y-6">
@@ -214,7 +320,7 @@ function ChangelogPageContent() {
           ))}
         </section>
 
-        {renderPagination(pageNumber)}
+        {/* {renderPagination(pageNumber)} */}
       </div>
     </main>
   );
