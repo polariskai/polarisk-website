@@ -1,145 +1,332 @@
 import Link from "next/link";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { Reveal } from "./reveal";
 
-const POLARISK_STATS = [
-  { value: "95-98%", label: "Alerts that are false positives in legacy workflows" },
-  { value: "$10B+", label: "Annual regulatory fines paid across the industry" },
-  { value: "90 days", label: "Typical deployment window without rip-and-replace" },
-  { value: "40x", label: "Potential productivity impact from fewer alerts + faster reviews" },
-];
+export const metadata = {
+  title: "About | Polarisk",
+  description:
+    "Polarisk is building the intelligence layer for financial crime compliance — fewer false positives, faster investigations, regulator-ready decisions.",
+};
 
 const PRINCIPLES = [
   {
-    title: "Augment, do not replace",
-    description:
-      "Polarisk is built as an intelligence layer over existing compliance systems, so teams can improve outcomes without throwing away current infrastructure.",
+    name: "Explainability is non-negotiable",
+    body: "If we cannot show exactly why a decision was made, the decision is worthless. Every output carries a full evidence chain — not because regulators require it, but because trust without a reason isn\u2019t trust.",
   },
   {
-    title: "Explainability by default",
-    description:
-      "Every recommendation is backed by traceable evidence and a full audit trail so compliance teams can defend decisions to internal risk teams and regulators.",
+    name: "Augment humans, never replace them",
+    body: "The best compliance outcomes come from AI speed combined with human judgment. We build for that partnership. The analyst\u2019s expertise is not the bottleneck — the tooling around them is.",
   },
   {
-    title: "Human-in-the-loop decisions",
-    description:
-      "Analysts stay in control. Agentic workflows accelerate investigations, while human reviewers make the final calls and continuously train the system.",
+    name: "Earn trust through outcomes",
+    body: "We measure ourselves on false positive reduction, investigation speed, and narrative quality — not feature counts. Our product succeeds when the compliance function earns more trust from the institution it serves.",
   },
   {
-    title: "Outcome-first execution",
-    description:
-      "Our operating model is focused on measurable reduction in noise, faster alert resolution, and higher-quality investigative narratives from day one.",
+    name: "Deploy in weeks, not years",
+    body: "We integrate with what institutions already run. Programmable trust should not require a system overhaul to get started.",
   },
 ];
 
-export const metadata = {
-  title: "About Us | Polarisk",
-  description:
-    "Learn about Polarisk's mission to build an AI workforce for financial crime compliance, with explainable investigations and audit-ready outcomes.",
-};
+function SectionLabel({ children }) {
+  return (
+    <p className="mb-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white/25">
+      <span className="block h-px w-5 bg-white/25" />
+      {children}
+    </p>
+  );
+}
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-20 pt-14 text-white">
+    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl">
-        <header className="mb-14 border-b border-white/[0.08] pb-10">
+      <div className="relative mx-auto max-w-[720px]">
+        {/* Nav */}
+        <div className="pb-4 pt-10">
           <Link
             href="/"
-            className="mb-5 inline-flex items-center gap-2 text-xs text-white/45 transition-colors hover:text-white/75"
+            className="inline-flex items-center gap-2 text-[13px] text-white/40 transition-colors hover:text-white/70"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to home
           </Link>
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs text-blue-200/90 ml-2">
-            <Sparkles className="h-3.5 w-3.5" />
+        </div>
+
+        {/* ── Hero ── */}
+        <Reveal as="header" className="border-b border-white/[0.08] pb-16 pt-28">
+          <p className="mb-8 text-[11px] font-medium uppercase tracking-[0.14em] text-blue-400">
             About Polarisk
-          </div>
-          <h1 className="max-w-3xl text-[clamp(2rem,6vw,3.4rem)] font-semibold tracking-tight">
-            Building the AI workforce for financial crime compliance.
-          </h1>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/50 md:text-base">
-            Polarisk exists to help compliance teams investigate faster, reduce operational noise, and deliver
-            regulator-ready decisions with confidence. We focus on practical AI adoption that works inside real
-            enterprise environments.
           </p>
-        </header>
+          <h1 className="text-[clamp(2.6rem,6vw,4rem)] font-light leading-[1.12] tracking-tight">
+            Trust should be
+            <br />
+            <em className="italic text-blue-400">programmable.</em>
+          </h1>
+          <p className="mt-8 max-w-[580px] text-[17px] font-light leading-[1.75] text-white/50">
+            The financial system runs on trust. But today, that trust is
+            assembled by hand — one analyst, one alert, one decision at a time.
+            We are building the infrastructure to change that.
+          </p>
+        </Reveal>
 
-        <section className="mb-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {POLARISK_STATS.map((item) => (
-            <article key={item.label} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <p className="text-2xl font-semibold text-white">{item.value}</p>
-              <p className="mt-2 text-sm leading-relaxed text-white/65">{item.label}</p>
-            </article>
-          ))}
-        </section>
+        {/* ── The Real Problem ── */}
+        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+          <SectionLabel>The real problem</SectionLabel>
 
-        <section className="mb-14 grid gap-8 border-y border-white/10 py-12 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">Why we started</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Compliance teams face an impossible tradeoff: massive alert volumes, rising regulatory pressure, and
-              tools that are either too rigid or too opaque. Too much time is spent on repetitive data gathering,
-              while high-risk signals can get buried in false positives.
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>
+              The financial system doesn&apos;t run on money. It runs on{" "}
+              <span className="font-normal text-blue-400">trust</span>.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Polarisk was created to close this gap with an explainable, agentic investigation layer that reduces
-              manual effort and improves decision quality without forcing disruptive system migrations.
+            <p>
+              Every transaction, every account, every institution exists because
+              somewhere, someone decided: this entity is who they say they are.
+              This money is what it appears to be. This risk is acceptable.
+            </p>
+            <p>
+              Trust is what makes commerce possible. And today, that trust is
+              verified by hand.
             </p>
           </div>
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">What we are building</h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Our multi-agent architecture coordinates specialized investigators for alert analysis, network
-              intelligence, external verification, quality control, and narrative generation. The result is a faster,
-              more consistent investigation workflow that still keeps analysts in control.
+
+          {/* Scene */}
+          <Reveal
+            className="my-12 rounded-r-lg border-l-2 border-blue-400 bg-white/[0.03] p-8"
+            delay={80}
+          >
+            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.1em] text-blue-400/50">
+              9:00 AM — compliance desk, major bank
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              We are starting with transaction monitoring and expanding toward a full compliance intelligence platform
-              across AML, KYC, sanctions, surveillance, and regulatory operations.
+            <div className="space-y-5 text-[16px] font-light leading-[1.85] text-white/50">
+              <p>
+                Forty-seven alerts in the queue. Each one demands the same
+                ritual: pull customer data from three different systems.
+                Cross-reference transactions. Check sanctions lists. Search for
+                adverse media. Write a narrative. Document the rationale.
+              </p>
+              <p>
+                By lunch, eight are cleared. Thirty-nine remain. Tomorrow there
+                will be fifty more.
+              </p>
+              <p>
+                Between 95 and 98 percent of those alerts will turn out to be
+                nothing. But the analyst cannot know which ones until they have
+                done the work. So they do the work. Every single time. And
+                somewhere in that noise, a real threat quietly passes through.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>
+              This is what programmable trust looks like today — a human being,
+              working at human speed, deciding piece by piece whether the
+              financial system should trust each transaction, each account, each
+              relationship.
+            </p>
+            <p>
+              The criminals adapt in days. The systems meant to catch them take
+              years to change.
             </p>
           </div>
-        </section>
 
-        <section className="mb-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Our principles</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {PRINCIPLES.map((item) => (
-              <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-                <h3 className="text-lg font-medium">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{item.description}</p>
-              </article>
+          {/* Stat */}
+          <Reveal className="my-10 flex items-baseline gap-4" delay={60}>
+            <span className="text-[3.5rem] font-light leading-none tracking-tight text-white">
+              $274B
+            </span>
+            <span className="max-w-[240px] text-[14px] font-light leading-snug text-white/50">
+              spent on compliance globally each year — most of it paying people
+              to do what machines should
+            </span>
+          </Reveal>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>
+              This is not a training problem. Not a headcount problem. It is a
+              structural failure — and it has persisted for decades because the
+              technology to fix it did not exist.
+            </p>
+            <p>
+              <strong className="font-medium text-white">Until now.</strong>
+            </p>
+          </div>
+        </Reveal>
+
+        {/* ── The Inflection Point ── */}
+        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+          <SectionLabel>The inflection point</SectionLabel>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>
+              The breakthroughs in AI over the last two years have changed what
+              is possible — not chatbots bolted onto compliance workflows, but
+              real investigative intelligence.
+            </p>
+            <p>
+              Systems that can read an alert the way a senior analyst would.
+              Gather evidence across fragmented data sources. Apply judgment.
+              Produce defensible, explainable decisions. At machine speed, at any
+              scale.
+            </p>
+          </div>
+
+          <Reveal className="my-14 border-l-2 border-blue-400/40 pl-8" delay={80}>
+            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-white/90">
+              For the first time,{" "}
+              <span className="not-italic text-blue-400">
+                trust can be verified programmatically
+              </span>{" "}
+              — in minutes, not days, without the noise of a thousand false
+              positives drowning out the signals that matter.
+            </p>
+          </Reveal>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>
+              We believe compliance should be one of the most intelligent
+              functions inside any financial institution — not the most manual
+              one. The technology to make that true now exists.
+            </p>
+            <p>
+              That is the company we are building. That is why Polarisk exists.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* ── What We Are Building ── */}
+        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+          <SectionLabel>What we are building</SectionLabel>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>An AI-native investigation layer for financial crime compliance.</p>
+            <p>
+              Specialized agents collaborate across alert triage, network
+              analysis, external verification, quality control, and narrative
+              generation — compressing hours of manual work into minutes. Every
+              recommendation is traceable. Every decision is auditable. Analysts
+              stay in control.
+            </p>
+            <p>
+              We deploy as an intelligence layer over existing transaction
+              monitoring systems.{" "}
+              <strong className="font-medium text-white">
+                No rip-and-replace. No 18-month migration.
+              </strong>{" "}
+              Teams see results in weeks, not quarters.
+            </p>
+            <p>
+              Starting with AML alert triage. Expanding across KYC, sanctions,
+              surveillance, and the full compliance lifecycle.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* ── How We Build ── */}
+        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+          <SectionLabel>How we build</SectionLabel>
+
+          <div className="flex flex-col">
+            {PRINCIPLES.map((item, i) => (
+              <Reveal
+                key={item.name}
+                delay={40 + i * 50}
+                className={`grid gap-2 border-b border-white/[0.08] py-8 md:grid-cols-[180px_1fr] md:gap-8 ${
+                  i === 0 ? "border-t" : ""
+                }`}
+              >
+                <span className="pt-0.5 text-[13px] font-medium leading-snug text-white">
+                  {item.name}
+                </span>
+                <p className="text-[15px] font-light leading-[1.8] text-white/50">
+                  {item.body}
+                </p>
+              </Reveal>
             ))}
           </div>
-        </section>
+        </Reveal>
 
-        <section className="rounded-2xl border border-blue-500/30 bg-blue-500/[0.08] p-8">
-          <h2 className="text-2xl font-semibold tracking-tight">Where we are now</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/80">
-            The core platform and end-to-end demo are in place, with an active pipeline built through warm
-            relationships in India and global markets. Our immediate focus is delivering design-partner pilots,
-            proving measurable outcomes, and scaling into production deployments.
+        {/* ── Where This Goes ── */}
+        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+          <SectionLabel>Where this goes</SectionLabel>
+
+          <h2 className="mb-10 text-[clamp(1.6rem,3.5vw,2.4rem)] font-light leading-[1.25] tracking-tight">
+            A world where{" "}
+            <em className="italic text-blue-400">trust is infrastructure</em>{" "}
+            — not overhead.
+          </h2>
+
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+            <p>Compliance is just the beginning.</p>
+            <p>
+              The mechanisms for verifying trust today — slow, fragmented,
+              manual, scattered across institutions that rarely talk to each
+              other — were designed for a different era. The financial system has
+              scaled enormously. The trust verification layer beneath it has not.
+            </p>
+            <p>
+              We are building toward a world where an institution can scale
+              safely without scaling headcount. Where a regulator can see clearly
+              across the system. Where a criminal finds not a gap between
+              overloaded analysts, but an intelligence that never tires and never
+              misses.
+            </p>
+          </div>
+
+          <Reveal className="my-14 border-l-2 border-blue-400/40 pl-8" delay={80}>
+            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-white/90">
+              When{" "}
+              <span className="not-italic text-blue-400">
+                trust is programmable
+              </span>
+              , institutions move faster. Regulators see further. Financial crime
+              has nowhere left to hide.
+            </p>
+          </Reveal>
+
+          <p className="text-[17px] font-light leading-[1.82] text-white/50">
+            That is the long game. And we are just getting started.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+        </Reveal>
+
+        {/* ── CTA ── */}
+        <Reveal className="py-20 text-center">
+          <p className="mx-auto max-w-md text-[15px] font-light leading-[1.75] text-white/50">
+            We are looking for design partners, early believers, and people who
+            think compliance deserves better technology. If that sounds like you,
+            let&apos;s talk.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://demo.polarisk.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-[#080c14] transition hover:bg-white/90"
+              className="rounded-md bg-white px-6 py-2.5 text-[14px] font-semibold text-[#080c14] transition hover:bg-white/90"
             >
               Request a demo
             </a>
             <a
               href="mailto:contact@polarisk.ai"
-              className="rounded-md border border-white/25 px-4 py-2 text-sm text-white/90 transition hover:border-white/45"
+              className="rounded-md border border-white/[0.15] px-6 py-2.5 text-[14px] text-white/50 transition hover:border-white/30 hover:text-white/80"
             >
               Contact us
             </a>
           </div>
-        </section>
+        </Reveal>
+
+        {/* Footer note */}
+        <div className="flex items-center justify-between border-t border-white/[0.08] pt-8">
+          <span className="text-[12px] tracking-wide text-white/20">
+            © {new Date().getFullYear()} Polarisk Technologies
+          </span>
+          <span className="text-[12px] tracking-wide text-white/20">
+            Bangalore, India
+          </span>
+        </div>
       </div>
     </main>
   );
