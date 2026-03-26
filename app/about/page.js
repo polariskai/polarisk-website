@@ -10,19 +10,19 @@ export const metadata = {
 
 const PRINCIPLES = [
   {
-    name: "Explainability is non-negotiable",
+    name: "Explainability is non-negotiable.",
     body: "If we cannot show exactly why a decision was made, the decision is worthless. Every output carries a full evidence chain — not because regulators require it, but because trust without a reason isn\u2019t trust.",
   },
   {
-    name: "Augment humans, never replace them",
-    body: "The best compliance outcomes come from AI speed combined with human judgment. We build for that partnership. The analyst\u2019s expertise is not the bottleneck — the tooling around them is.",
+    name: "Designed for humans.",
+    body: "The best compliance outcomes come from AI speed combined with human judgment. We build for that partnership. The analyst\u2019s expertise is not the bottleneck — the tooling around them is. And creativity is not a luxury - it is a necessity. Good design enables this.",
   },
   {
-    name: "Earn trust through outcomes",
+    name: "Earn trust through outcomes.",
     body: "We measure ourselves on false positive reduction, investigation speed, and narrative quality — not feature counts. Our product succeeds when the compliance function earns more trust from the institution it serves.",
   },
   {
-    name: "Deploy in weeks, not years",
+    name: "Deploy in weeks, not years.",
     body: "We integrate with what institutions already run. Programmable trust should not require a system overhaul to get started.",
   },
 ];
@@ -109,8 +109,8 @@ export default function AboutPage() {
                 adverse media. Write a narrative. Document the rationale.
               </p>
               <p>
-                By lunch, eight are cleared. Thirty-nine remain. Tomorrow there
-                will be fifty more.
+                By lunch, 8 are cleared. 39 remain. Tomorrow there
+                will be 50 more.
               </p>
               <p>
                 Between 95 and 98 percent of those alerts will turn out to be
