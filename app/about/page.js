@@ -301,19 +301,17 @@ export default function AboutPage() {
             let&apos;s talk.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://demo.polarisk.ai"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
               className="rounded-md bg-white px-6 py-2.5 text-[14px] font-semibold text-[#080c14] transition hover:bg-white/90"
             >
-              Request a demo
-            </a>
+              Contact us
+            </Link>
             <a
               href="mailto:contact@polarisk.ai"
               className="rounded-md border border-white/[0.15] px-6 py-2.5 text-[14px] text-white/50 transition hover:border-white/30 hover:text-white/80"
             >
-              Contact us
+              Email us
             </a>
           </div>
         </Reveal>
@@ -321,7 +319,7 @@ export default function AboutPage() {
         {/* Footer note */}
         <div className="flex items-center justify-between border-t border-white/[0.08] pt-8">
           <span className="text-[12px] tracking-wide text-white/20">
-            © {new Date().getFullYear()} Polarisk Technologies
+            © {new Date().getFullYear()} Polarisk.ai
           </span>
           <span className="text-[12px] tracking-wide text-white/20">
             Bangalore, India

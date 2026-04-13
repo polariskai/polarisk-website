@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   Activity,
   AlertTriangle,
@@ -25,6 +26,7 @@ const NAV_LINKS = [
   { label: "Product", href: "#" },
   { label: "Changelog", href: "/changelog" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
   // { label: "Customers", href: "#" },
   // { label: "Pricing", href: "#" },
   // { label: "Docs", href: "#" },
@@ -70,10 +72,9 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "94%", label: "Reduction in false positives" },
-  { value: "12x", label: "Faster case closure" },
-  { value: "80%", label: "Reduction in analyst workload" },
-  { value: "60%", label: "Lower cost vs legacy tools" },
+  { value: "70%", label: "Reduction in false positives" },
+  { value: "40x", label: "Productivity Gain" },
+  { value: "5x", label: "Higher Risk identification" },
 ];
 
 const TESTIMONIALS = [
@@ -211,10 +212,6 @@ export default function HomePage() {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const handleGetStarted = () => {
-    window.open("https://demo.polarisk.ai", "_blank", "noopener,noreferrer");
-  };
-
   const handleContactUs = () => {
     window.open("mailto:contact@polarisk.ai", "_blank", "noopener,noreferrer");
   };
@@ -258,19 +255,12 @@ export default function HomePage() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={handleGetStarted}
-              className="hidden text-[13px] text-white/60 transition-colors hover:text-white md:block"
+            <Link
+              href="/contact"
+              className="flex items-center gap-1.5 rounded-md border border-white/[0.12] px-4 py-1.5 text-[13px] text-white/60 transition-all hover:border-white/25 hover:text-white/90"
             >
-              Log in
-            </button>
-            <button
-              onClick={handleGetStarted}
-              className="flex items-center gap-1.5 rounded-md bg-white px-4 py-1.5 text-[13px] font-semibold text-[#080c14] transition-all hover:bg-white/90"
-            >
-              Demo
-              <ArrowRight className="h-3.5 w-3.5" />
-            </button>
+              Contact us
+            </Link>
           </div>
         </div>
       </header>
@@ -299,7 +289,7 @@ export default function HomePage() {
           style={{ "--enter-delay": "140ms" }}
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
-          Now in customer discovery - Polarisk.ai
+          Reach out as Design Partner
           {/* <ChevronRight className="h-3 w-3 opacity-60" /> */}
         </div>
 
@@ -319,7 +309,7 @@ export default function HomePage() {
           className="load-in relative mb-6 max-w-3xl text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] tracking-tight"
           style={{ "--enter-delay": "280ms", lineHeight: 1.08 }}
         >
-          <span className="text-white">Compliance Workforce,</span>
+          <span className="text-white">AI Agents for</span>
           <br />
           <span
             style={{
@@ -330,58 +320,110 @@ export default function HomePage() {
               backgroundClip: "text",
             }}
           >
-            reimagined with AI.
+            Financial Crime
           </span>
         </h1>
 
-        <p
-          className="load-in relative mb-10 max-w-xl text-[16px] leading-relaxed text-white/50"
+        <div
+          className="load-in relative mb-10 w-full max-w-2xl space-y-6"
           style={{ "--enter-delay": "340ms" }}
         >
-        Configure AI agents across AML, trade surveillance, sanctions, and fraud
-        <br />
-        trained on <i>your</i> policies, <i>your</i> thresholds, <i>your</i> logic. 
-        <br />
-        Outcomes — without the overhead.
-        </p>
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            <div className="flex flex-col items-center rounded-lg border border-white/[0.08] bg-white/[0.03] px-5 py-4 text-center">
+              <div className="mb-2 flex justify-center">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04]">
+                  <Zap className="h-4 w-4 text-blue-400" aria-hidden />
+                </div>
+              </div>
+              <p className="text-[13px] font-medium leading-snug text-blue-400">
+                READY-TO-DEPLOY AI AGENTS
+              </p>
+              {/* <div className="mt-3 h-px w-full bg-white/20" aria-hidden /> */}
+              <p className="mt-3 max-w-[260px] text-[15px] font-medium leading-snug text-white/85">
+                Plug-n-play with your existing tools
+              </p>
+            </div>
+            <div className="flex flex-col items-center rounded-lg border border-white/[0.08] bg-white/[0.03] px-5 py-4 text-center">
+              <div className="mb-2 flex justify-center">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04]">
+                  <Cog className="h-4 w-4 text-blue-400" aria-hidden />
+                </div>
+              </div>
+              <p className="text-[13px] font-medium leading-snug text-blue-400">
+                BUILD AND CONFIGURE
+              </p>
+              {/* <div className="mt-3 h-px w-full bg-white/20" aria-hidden /> */}
+              <p className="mt-3 max-w-[260px] text-[15px] font-medium leading-snug text-white/85">
+                Test and deploy your own AI Agents
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] px-5 py-4 text-center">
+              <div className="mb-2 flex justify-center">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04]">
+                  <Shield className="h-4 w-4 text-blue-400" aria-hidden />
+                </div>
+              </div>
+              <p className="text-[13px] font-medium leading-snug text-blue-400">
+                TRANSACTION MONITORING
+              </p>
+              <p className="mt-1.5 text-[15px] font-medium text-white/85">
+                AML / KYC
+              </p>
+            </div>
+            <div className="rounded-lg border border-white/[0.08] bg-white/[0.02] px-5 py-4 text-center">
+              <div className="mb-2 flex justify-center">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04]">
+                  <LineChart className="h-4 w-4 text-blue-400" aria-hidden />
+                </div>
+              </div>
+              <p className="text-[13px] font-medium leading-snug text-blue-400">
+                TRADE MONITORING
+              </p>
+              <p className="mt-1.5 text-[15px] font-medium text-white/85">
+                Market manipulation
+              </p>
+            </div>
+          </div>
+
+          <p className="mx-auto max-w-lg text-[15px] leading-relaxed text-white/45">
+            Detect compliance risk, which is{" "}
+            <span className="text-white/70">humanly impossible</span>.
+          </p>
+        </div>
 
         <div
           className="load-in relative flex flex-col items-center gap-3 sm:flex-row"
           style={{ "--enter-delay": "400ms" }}
         >
-          <button
-            onClick={handleGetStarted}
-            className="flex items-center gap-2 rounded-md bg-white px-6 py-2.5 text-[14px] font-semibold text-[#080c14] shadow-lg shadow-white/10 transition-all hover:bg-white/90"
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 rounded-md border border-white/[0.12] px-6 py-2.5 text-[14px] text-white/60 transition-all hover:border-white/25 hover:text-white/90"
           >
-            Demo
-            <ArrowRight className="h-4 w-4" />
-          </button>
-          {/* <button
-            onClick={handleGetStarted}
-            className="flex items-center gap-2 rounded-md border border-white/[0.08] bg-white/[0.05] px-6 py-2.5 text-[14px] font-medium text-white/70 transition-all hover:bg-white/[0.08] hover:text-white"
-          >
-            Watch demo
-            <ChevronRight className="h-4 w-4 opacity-60" />
-          </button> */}
+            Contact us
+            <ArrowRight className="h-4 w-4 opacity-60" />
+          </Link>
         </div>
 
         <p
           className="load-in relative mt-8 text-[12px] text-white/30"
           style={{ "--enter-delay": "470ms" }}
         >
-          Trusted by compliance teams at top global financial institutions
+          Stress tested by compliance teams at top global financial institutions
         </p>
       </section>
 
       <section className="border-y border-white/[0.05] bg-white/[0.02]">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 py-14 md:grid-cols-4 md:gap-4">
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-x-10 gap-y-10 px-6 py-14 md:gap-x-20 md:gap-y-8">
           {STATS.map((stat, index) => (
             <ScrollReveal
               key={stat.label}
               as="div"
               delay={80 + index * 55}
               threshold={0.35}
-              className="flex flex-col items-center text-center"
+              className="flex max-w-[220px] flex-col items-center px-4 text-center sm:max-w-[240px] sm:px-6"
             >
               <span
                 className="mb-1 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight"
@@ -436,13 +478,13 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <button
-                onClick={handleGetStarted}
-                className="group mt-10 flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
+              <Link
+                href="/contact"
+                className="group mt-10 inline-flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
               >
-                Demo
+                Contact us
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </button>
+              </Link>
             </div>
 
             <div
@@ -910,13 +952,13 @@ llm:
                   </div>
                 ))}
               </div>
-              <button
-                onClick={handleGetStarted}
-                className="group mt-10 flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
+              <Link
+                href="/contact"
+                className="group mt-10 inline-flex items-center gap-2 text-[13px] font-semibold text-white transition-colors hover:text-blue-300"
               >
-                Demo
+                Contact us
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </button>
+              </Link>
             </div>
 
             <div
@@ -1062,14 +1104,15 @@ llm:
             crime faster, with less noise and more confidence.
           </p>
           <div className="relative flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              onClick={handleGetStarted}
-              className="flex items-center gap-2 rounded-md bg-white px-8 py-3 text-[14px] font-semibold text-[#080c14] shadow-xl shadow-white/5 transition-all hover:bg-white/90"
+            <Link
+              href="/contact"
+              className="flex items-center gap-2 rounded-md border border-white/[0.12] px-8 py-3 text-[14px] text-white/60 transition-all hover:border-white/25 hover:text-white/90"
             >
-              Demo
-              <ArrowRight className="h-4 w-4" />
-            </button>
+              Contact us
+              <ArrowRight className="h-4 w-4 opacity-60" />
+            </Link>
             <button
+              type="button"
               onClick={handleContactUs}
               className="text-[13px] text-white/40 transition-colors hover:text-white/70"
             >
