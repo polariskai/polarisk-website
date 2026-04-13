@@ -73,6 +73,46 @@ body {
   opacity: 1;
 }
 
+@keyframes particle-traverse {
+  0% {
+    left: -2%;
+    top: var(--p-y0);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--p-peak, 0.8);
+  }
+  50% {
+    opacity: var(--p-peak, 0.8);
+  }
+  72% {
+    opacity: var(--p-end, 0);
+  }
+  100% {
+    left: var(--p-x1, 95%);
+    top: var(--p-y1);
+    opacity: var(--p-end, 0);
+  }
+}
+
+@keyframes connection-dash {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .load-in,
   .scroll-reveal {
