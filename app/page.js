@@ -17,6 +17,9 @@ import {
   Shield,
   Zap,
   Cog,
+  FileText,
+  Newspaper,
+  Radio,
 } from "lucide-react";
 
 // const polariskLogo = "/polarisk-logo-2.png";
@@ -79,18 +82,23 @@ const STATS = [
 
 const FUNNEL_SOURCES = [
   { label: "Transactions", icon: Activity },
-  { label: "PEP Sanctions", icon: Shield },
-  { label: "MCA Registry", icon: Globe },
-  { label: "News", icon: Search },
-  { label: "Public Risk Data", icon: AlertTriangle },
+  { label: "Trades", icon: LineChart },
+  { label: "PEP / Sanctions Screening", icon: Shield },
+  { label: "SEC Filings / MCA Registry", icon: FileText },
+  { label: "Public News", icon: Newspaper },
+  { label: "Negative Media Screening", icon: Radio }  
 ];
 
 const AGENT_LABELS = [
-  "KYC Agent",
-  "Behavioral Agent",
-  "Screening Agent",
-  "Network Agent",
-  "Risk Scorer",
+  "Client Research Agent",
+  "News Analysis Agent",
+  "Media Screening Agent",
+  "Entity Relationship Agent",
+  "Communications Agent",
+  "SAR/STR Gen Agent",
+  "Trade Analysis Agent",
+  "Transaction Analysis Agent",
+  "Regulatory Horizon Agent",
 ];
 
 const FUNNEL_PARTICLES = [
@@ -351,20 +359,20 @@ function FunnelAnimation() {
 
           {/* Agent labels */}
           <div
-            className="relative z-10 flex flex-col items-center gap-2 px-4 pt-6"
+            className="relative z-30 flex flex-col items-center gap-2 px-4 pt-6"
             style={{
               opacity: isActive ? 1 : 0,
               transition: "opacity 0.6s ease 0.8s",
             }}
           >
-            <span className="text-[10px] font-medium uppercase tracking-widest text-blue-400/60">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-blue-400/80">
               AI Agent Swarm
             </span>
             <div className="flex flex-wrap justify-center gap-1.5">
               {AGENT_LABELS.map((agent) => (
                 <span
                   key={agent}
-                  className="rounded-md border border-white/[0.06] bg-white/[0.04] px-2 py-1 text-[9px] text-white/35"
+                  className="rounded-md border border-blue-400/20 bg-blue-500/10 px-2 py-1 text-[9px] font-medium text-white/75"
                 >
                   {agent}
                 </span>
@@ -466,9 +474,17 @@ function FunnelAnimation() {
           <span className="text-center text-[13px] font-medium text-red-400/90">
             True Risk Alerts
           </span>
-          <span className="text-center text-[10px] text-white/30">
-            Only genuine threats
-          </span>
+          <div className="flex flex-col items-stretch gap-1.5 w-full">
+            {["Insider Trading", "Market Manipulation", "AML", "CDD / EDD", "Sanction Screening"].map((label) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-red-400/80 shrink-0" />
+                <span className="text-[10px] leading-tight text-white/60">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
