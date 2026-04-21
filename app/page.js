@@ -380,10 +380,15 @@ function FunnelAnimation() {
             </div>
           </div>
 
-          {/* Animated particles */}
+          {/* Hide layer until intersecting: paused keyframes + fill-mode still paint; parent opacity avoids any stray flash. */}
           <div
-            className="absolute inset-0 z-10"
-            style={{ top: "20%", bottom: "5%" }}
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              top: "20%",
+              bottom: "5%",
+              opacity: isActive ? 1 : 0,
+              transition: "opacity 0.3s ease",
+            }}
           >
             {FUNNEL_PARTICLES.map((p, i) => (
               <div
@@ -392,6 +397,9 @@ function FunnelAnimation() {
                 style={{
                   width: p.size,
                   height: p.size,
+                  left: "-2%",
+                  top: `${p.y0}%`,
+                  opacity: 0,
                   backgroundColor: p.color,
                   boxShadow: `0 0 ${p.size + 2}px ${p.color}`,
                   "--p-y0": `${p.y0}%`,
@@ -401,6 +409,7 @@ function FunnelAnimation() {
                   "--p-end": p.isRed ? "0.9" : "0",
                   animation: `particle-traverse ${p.dur}s ease-in-out infinite`,
                   animationDelay: `${p.delay}s`,
+                  animationFillMode: "both",
                   animationPlayState: isActive ? "running" : "paused",
                   willChange: "left, top, opacity",
                 }}
