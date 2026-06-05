@@ -8,11 +8,14 @@ import {
   Mail,
 } from "lucide-react";
 
-export const metadata = {
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata = pageMetadata({
   title: "Contact | Polarisk",
   description:
-    "Get in touch with Polarisk for sales, product demos, support, and general questions.",
-};
+    "Get in touch with Polarisk for sales, product demos, support, and general questions about financial crime compliance.",
+  path: "/contact/",
+});
 
 const CHANNELS = [
   {

@@ -1,31 +1,53 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { buildStructuredData, DEFAULT_DESCRIPTION, pageMetadata } from "../lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
+const homeMetadata = pageMetadata({
+  title: "Polarisk | AI Compliance Intelligence for Financial Crime",
+  description: DEFAULT_DESCRIPTION,
+  path: "/",
+});
+
 export const metadata = {
-  title: "Polarisk | Compliance Intelligence",
-  description:
-    "Polarisk is the AI operating system for financial compliance. Reduce investigation time and improve decision quality with compliance intelligence.",
+  ...homeMetadata,
   metadataBase: new URL("https://polarisk.ai"),
   openGraph: {
-    title: "Polarisk | Compliance Intelligence",
-    description:
-      "The AI operating system for financial compliance. Faster investigations. Better signal. Regulator-ready outcomes.",
-    url: "https://polarisk.ai",
-    siteName: "Polarisk",
-    type: "website",
+    ...homeMetadata.openGraph,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Polarisk — AI Compliance Intelligence for Financial Crime",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Polarisk | AI Compliance Intelligence for Financial Crime",
+    description: DEFAULT_DESCRIPTION,
+    images: ["/og-image.png"],
   },
 };
+
+const structuredData = buildStructuredData();
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6FLCJVJE2L"
           strategy="afterInteractive"
