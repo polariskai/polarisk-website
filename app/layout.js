@@ -1,7 +1,12 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { buildStructuredData, DEFAULT_DESCRIPTION, pageMetadata } from "../lib/seo";
+import {
+  buildStructuredData,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  pageMetadata,
+} from "../lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,14 +24,7 @@ export const metadata = {
   metadataBase: new URL("https://polarisk.ai"),
   openGraph: {
     ...homeMetadata.openGraph,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Polarisk — AI Compliance Intelligence for Financial Crime",
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
