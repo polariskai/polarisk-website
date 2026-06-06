@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
 
-export const metadata = {
-  title: "Contact sales | Polarisk",
-  description:
-    "Talk to the Polarisk team about pilots, enterprise needs, and product demos.",
-};
-
 const BULLETS = [
   "Request a guided product walkthrough",
   "Explore design partner and pilot options",

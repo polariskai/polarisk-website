@@ -2,11 +2,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Reveal } from "./reveal";
 
-export const metadata = {
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata = pageMetadata({
   title: "About | Polarisk",
   description:
-    "Polarisk is building the intelligence layer for financial crime compliance — fewer false positives, faster investigations, regulator-ready decisions.",
-};
+    "Polarisk is building the intelligence layer for financial crime compliance — fewer false positives, faster AML investigations, regulator-ready decisions.",
+  path: "/about/",
+});
 
 const PRINCIPLES = [
   {
@@ -67,9 +70,9 @@ export default function AboutPage() {
             <em className="italic text-blue-400">programmable.</em>
           </h1>
           <p className="mt-8 max-w-[580px] text-[17px] font-light leading-[1.75] text-white/50">
-            The financial system runs on trust. But today, that trust is
-            assembled by hand — one analyst, one alert, one decision at a time.
-            We are building the infrastructure to change that.
+            Polarisk is building the infrastructure for programmable trust in
+            financial crime compliance. Today, that trust is assembled by hand —
+            one analyst, one alert, one decision at a time.
           </p>
         </Reveal>
 

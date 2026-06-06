@@ -645,7 +645,7 @@ export default function HomePage() {
           className="load-in relative mb-6 max-w-3xl text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] tracking-tight"
           style={{ "--enter-delay": "280ms", lineHeight: 1.08 }}
         >
-          <span className="text-white">AI Agents for</span>
+          <span className="text-white">Polarisk — AI Agents for</span>
           <br />
           <span
             style={{
@@ -725,8 +725,9 @@ export default function HomePage() {
           </div>
 
           <p className="mx-auto max-w-lg text-[15px] leading-relaxed text-white/45">
-            Detect compliance risk, which is{" "}
-            <span className="text-white/70">humanly impossible</span>.
+            Polarisk helps compliance teams detect financial crime risk across
+            AML, KYC, and transaction monitoring — work that is{" "}
+            <span className="text-white/70">humanly impossible</span> at scale.
           </p>
         </div>
 
