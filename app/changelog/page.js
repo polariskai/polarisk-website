@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Sparkles } from "lucide-react";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 const POSTS = [
   {
@@ -285,7 +287,9 @@ function ChangelogPageContent() {
   const pageNumber = Number.isNaN(parsed) || parsed < 1 ? 1 : parsed;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-16 pt-14 text-white">
+    <>
+      <SiteHeader solid />
+      <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-16 pt-24 text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
@@ -293,15 +297,7 @@ function ChangelogPageContent() {
 
       <div className="relative mx-auto max-w-4xl">
         <header className="mb-10 border-b border-white/[0.08] pb-6">
-          <Link
-            href="/"
-            className="mb-5 inline-flex items-center gap-2 text-xs text-white/45 transition-colors hover:text-white/75"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Polarisk
-          </Link>
-          {/* add small gap to the left */}
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs text-blue-200/90 ml-2">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs text-blue-200/90">
             <Sparkles className="h-3.5 w-3.5" />
             Product updates
           </div>
@@ -322,7 +318,9 @@ function ChangelogPageContent() {
 
         {/* {renderPagination(pageNumber)} */}
       </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 

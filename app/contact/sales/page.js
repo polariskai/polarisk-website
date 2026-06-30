@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
+import SiteHeader from "../../../components/SiteHeader";
+import SiteFooter from "../../../components/SiteFooter";
 
 const BULLETS = [
   "Request a guided product walkthrough",
@@ -10,14 +12,16 @@ const BULLETS = [
 
 export default function ContactSalesPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 text-white">
+    <>
+      <SiteHeader solid />
+      <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
       <div className="relative mx-auto max-w-[720px]">
-        <div className="pb-4 pt-10">
+        <div className="pb-4 pt-6">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 text-[13px] text-white/40 transition-colors hover:text-white/70"
@@ -75,10 +79,9 @@ export default function ContactSalesPage() {
           </div>
         </section>
 
-        <p className="mt-12 text-center text-[12px] text-white/25">
-          © {new Date().getFullYear()} Polarisk.ai
-        </p>
       </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }

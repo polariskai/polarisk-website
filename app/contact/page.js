@@ -1,12 +1,13 @@
 import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowRight,
   BookOpen,
   Building2,
   LifeBuoy,
   Mail,
 } from "lucide-react";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 import { pageMetadata } from "../../lib/seo";
 
@@ -56,23 +57,15 @@ const CHANNELS = [
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 text-white">
+    <>
+      <SiteHeader solid />
+      <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
       <div className="relative mx-auto max-w-[640px]">
-        <div className="pb-4 pt-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[13px] text-white/40 transition-colors hover:text-white/70"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to home
-          </Link>
-        </div>
-
         <header className="border-b border-white/[0.08] pb-14 pt-16 text-center">
           <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-semibold tracking-tight">
             How can we help?
@@ -129,10 +122,9 @@ export default function ContactPage() {
           })}
         </ul>
 
-        <p className="mt-12 text-center text-[12px] text-white/25">
-          © {new Date().getFullYear()} Polarisk.ai
-        </p>
       </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }

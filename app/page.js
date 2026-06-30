@@ -21,19 +21,11 @@ import {
   Newspaper,
   Radio,
 } from "lucide-react";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 
 // const polariskLogo = "/polarisk-logo-2.png";
 const polariskLogo = "/polarisk-logo.svg";
-
-const NAV_LINKS = [
-  { label: "Product", href: "#" },
-  { label: "Changelog", href: "/changelog" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  // { label: "Customers", href: "#" },
-  // { label: "Pricing", href: "#" },
-  // { label: "Docs", href: "#" },
-];
 
 const FEATURES = [
   {
@@ -532,14 +524,7 @@ function FunnelAnimation() {
 }
 
 export default function HomePage() {
-  const [scrolled, setScrolled] = useState(false);
   const [isPageReady, setIsPageReady] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -558,48 +543,7 @@ export default function HomePage() {
         isPageReady ? "page-ready" : ""
       }`}
     >
-      <header
-        className={`load-in fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "border-b border-white/[0.06] bg-[#080c14]/90 backdrop-blur-xl"
-            : ""
-        }`}
-        style={{ "--enter-delay": "40ms" }}
-      >
-        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-          <div className="flex items-center gap-2.5">
-            <img
-              src="/polarisk-logo-white.svg"
-              alt="Polarisk"
-              className="h-7 w-7 object-contain"
-            />
-            <span className="text-[15px] font-semibold tracking-tight text-white">
-              Polarisk
-            </span>
-          </div>
-
-          <nav className="hidden items-center gap-6 md:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-[13px] text-white/50 transition-colors hover:text-white/90"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="flex items-center gap-1.5 rounded-md border border-white/[0.12] px-4 py-1.5 text-[13px] text-white/60 transition-all hover:border-white/25 hover:text-white/90"
-            >
-              Contact us
-            </Link>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="relative flex flex-col items-center overflow-hidden px-6 pb-32 pt-32 text-center">
         <div className="pointer-events-none absolute inset-0">
@@ -621,15 +565,6 @@ export default function HomePage() {
         </div>
 
         <div
-          className="load-in relative mb-8 flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-[12px] font-medium text-blue-400"
-          style={{ "--enter-delay": "140ms" }}
-        >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
-          Reach out as Design Partner
-          {/* <ChevronRight className="h-3 w-3 opacity-60" /> */}
-        </div>
-
-        <div
           className="load-in relative mb-8"
           style={{ "--enter-delay": "220ms" }}
         >
@@ -645,7 +580,7 @@ export default function HomePage() {
           className="load-in relative mb-6 max-w-3xl text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] tracking-tight"
           style={{ "--enter-delay": "280ms", lineHeight: 1.08 }}
         >
-          <span className="text-white">Polarisk — AI Agents for</span>
+          <span className="text-white">Polarisk - AI Agents for</span>
           <br />
           <span
             style={{
@@ -1482,32 +1417,7 @@ llm:
         </div>
       </section>
 
-      <footer className="border-t border-white/[0.05] px-6 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2.5">
-            <img src={polariskLogo} alt="Polarisk" className="h-5 w-5 object-contain" />
-            <span className="text-[13px] font-semibold text-white/60">
-              Polarisk
-            </span>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {["Privacy", "Terms", "Security", "Status", "Docs", "Blog"].map(
-              (link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className="text-[12px] text-white/30 transition-colors hover:text-white/60"
-                >
-                  {link}
-                </a>
-              )
-            )}
-          </div>
-          <div className="text-[12px] text-white/25">
-            © {new Date().getFullYear()} Polarisk, Inc.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
