@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 
@@ -33,10 +34,13 @@ export default function SiteHeader({ solid = false }) {
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <img
+          <Image
             src="/polarisk-logo-white.svg"
             alt="Polarisk"
+            width={28}
+            height={28}
             className="h-7 w-7 object-contain"
+            priority
           />
           <span className="text-[15px] font-semibold tracking-tight text-white">
             Polarisk

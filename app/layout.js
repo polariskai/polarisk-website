@@ -1,12 +1,7 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import {
-  buildStructuredData,
-  DEFAULT_DESCRIPTION,
-  DEFAULT_OG_IMAGE,
-  pageMetadata,
-} from "../lib/seo";
+import { buildStructuredData, DEFAULT_DESCRIPTION, pageMetadata } from "../lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,15 +17,10 @@ const homeMetadata = pageMetadata({
 export const metadata = {
   ...homeMetadata,
   metadataBase: new URL("https://polarisk.ai"),
-  openGraph: {
-    ...homeMetadata.openGraph,
-    images: [DEFAULT_OG_IMAGE],
-  },
   twitter: {
     card: "summary_large_image",
     title: "Polarisk | AI Compliance Intelligence for Financial Crime",
     description: DEFAULT_DESCRIPTION,
-    images: ["/og-image.png"],
   },
 };
 
@@ -40,6 +30,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#080c14]"
+        >
+          Skip to content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
