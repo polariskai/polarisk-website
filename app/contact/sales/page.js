@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
+import SiteHeader from "../../../components/SiteHeader";
+import SiteFooter from "../../../components/SiteFooter";
 
 const BULLETS = [
   "Request a guided product walkthrough",
@@ -10,17 +12,19 @@ const BULLETS = [
 
 export default function ContactSalesPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 text-white">
-      <div className="pointer-events-none absolute inset-0">
+    <>
+      <SiteHeader solid />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
       <div className="relative mx-auto max-w-[720px]">
-        <div className="pb-4 pt-10">
+        <div className="pb-4 pt-6">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-[13px] text-white/40 transition-colors hover:text-white/70"
+            className="inline-flex items-center gap-2 text-[13px] text-white/55 transition-colors hover:text-white/80"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Contact
@@ -31,15 +35,15 @@ export default function ContactSalesPage() {
           <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-semibold tracking-tight">
             Contact sales
           </h1>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/45">
-            Tell us how we can help. Book a time below, or email{" "}
+          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/55">
+            Tell us how we can help. Email{" "}
             <a
               href="mailto:contact@polarisk.ai"
               className="text-blue-400 underline decoration-blue-400/30 underline-offset-2 hover:text-blue-300"
             >
               contact@polarisk.ai
-            </a>
-            .
+            </a>{" "}
+            and our team will follow up within one business day to schedule a call.
           </p>
           <ul className="mt-8 space-y-3">
             {BULLETS.map((line) => (
@@ -75,10 +79,9 @@ export default function ContactSalesPage() {
           </div>
         </section>
 
-        <p className="mt-12 text-center text-[12px] text-white/25">
-          © {new Date().getFullYear()} Polarisk.ai
-        </p>
       </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }

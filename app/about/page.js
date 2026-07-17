@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { Reveal } from "./reveal";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 import { pageMetadata } from "../../lib/seo";
 
@@ -32,7 +33,7 @@ const PRINCIPLES = [
 
 function SectionLabel({ children }) {
   return (
-    <p className="mb-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white/25">
+    <p className="mb-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
       <span className="block h-px w-5 bg-white/25" />
       {children}
     </p>
@@ -41,26 +42,17 @@ function SectionLabel({ children }) {
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 text-white">
-      <div className="pointer-events-none absolute inset-0">
+    <>
+      <SiteHeader solid />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
       </div>
 
       <div className="relative mx-auto max-w-[720px]">
-        {/* Nav */}
-        <div className="pb-4 pt-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-[13px] text-white/40 transition-colors hover:text-white/70"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to home
-          </Link>
-        </div>
-
         {/* ── Hero ── */}
-        <Reveal as="header" className="border-b border-white/[0.08] pb-16 pt-28">
+        <Reveal as="header" className="border-b border-white/[0.08] pb-16 pt-20">
           <p className="mb-8 text-[11px] font-medium uppercase tracking-[0.14em] text-blue-400">
             About Polarisk
           </p>
@@ -319,16 +311,9 @@ export default function AboutPage() {
           </div>
         </Reveal>
 
-        {/* Footer note */}
-        <div className="flex items-center justify-between border-t border-white/[0.08] pt-8">
-          <span className="text-[12px] tracking-wide text-white/20">
-            © {new Date().getFullYear()} Polarisk.ai
-          </span>
-          <span className="text-[12px] tracking-wide text-white/20">
-            Bangalore, India
-          </span>
-        </div>
       </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }

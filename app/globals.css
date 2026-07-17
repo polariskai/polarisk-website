@@ -51,17 +51,20 @@ body {
   animation: reveal 0.55s ease-out forwards;
 }
 
-.load-in {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--enter-delay, 0ms),
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--enter-delay, 0ms);
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.page-ready .load-in {
-  opacity: 1;
-  transform: translateY(0);
+.load-in {
+  opacity: 0;
+  animation: fade-in-up 560ms cubic-bezier(0.22, 1, 0.36, 1) var(--enter-delay, 0ms) both;
 }
 
 .scroll-reveal {
@@ -113,12 +116,42 @@ body {
   }
 }
 
+/* Shared brand text-gradient utilities to avoid repeating inline gradient
+   style objects across pages. */
+.text-gradient-brand {
+  background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-brand-2 {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-stat {
+  background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Respect OS-level reduced-motion preference for every animation and
+   transition on the site, including ones set via inline styles (a
+   stylesheet !important rule overrides non-important inline declarations). */
 @media (prefers-reduced-motion: reduce) {
-  .load-in,
-  .scroll-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
