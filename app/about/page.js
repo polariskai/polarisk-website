@@ -33,8 +33,8 @@ const PRINCIPLES = [
 
 function SectionLabel({ children }) {
   return (
-    <p className="mb-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">
-      <span className="block h-px w-5 bg-white/25" />
+    <p className="mb-10 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#5c6884]">
+      <span className="block h-px w-5 bg-black/20" />
       {children}
     </p>
   );
@@ -43,16 +43,12 @@ function SectionLabel({ children }) {
 export default function AboutPage() {
   return (
     <>
-      <SiteHeader solid />
-      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
-      </div>
+      <SiteHeader solid tone="light" />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#f6f7fa] px-6 pb-24 pt-14 text-[#0d1326]">
 
       <div className="relative mx-auto max-w-[720px]">
         {/* ── Hero ── */}
-        <Reveal as="header" className="border-b border-white/[0.08] pb-16 pt-20">
+        <Reveal as="header" className="border-b border-black/[0.08] pb-16 pt-20">
           <p className="mb-8 text-[11px] font-medium uppercase tracking-[0.14em] text-blue-400">
             About Polarisk
           </p>
@@ -61,7 +57,7 @@ export default function AboutPage() {
             <br />
             <em className="italic text-blue-400">programmable.</em>
           </h1>
-          <p className="mt-8 max-w-[580px] text-[17px] font-light leading-[1.75] text-white/50">
+          <p className="mt-8 max-w-[580px] text-[17px] font-light leading-[1.75] text-[#5c6884]">
             Polarisk is building the infrastructure for programmable trust in
             financial crime compliance. Today, that trust is assembled by hand —
             one analyst, one alert, one decision at a time.
@@ -69,10 +65,10 @@ export default function AboutPage() {
         </Reveal>
 
         {/* ── The Real Problem ── */}
-        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+        <Reveal as="section" className="border-b border-black/[0.08] py-20">
           <SectionLabel>The real problem</SectionLabel>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               The financial system doesn&apos;t run on money. It runs on{" "}
               <span className="font-normal text-blue-400">trust</span>.
@@ -90,13 +86,13 @@ export default function AboutPage() {
 
           {/* Scene */}
           <Reveal
-            className="my-12 rounded-r-lg border-l-2 border-blue-400 bg-white/[0.03] p-8"
+            className="my-12 rounded-r-lg border-l-2 border-blue-400 bg-white p-8"
             delay={80}
           >
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.1em] text-blue-400/50">
               9:00 AM — compliance desk, major bank
             </p>
-            <div className="space-y-5 text-[16px] font-light leading-[1.85] text-white/50">
+            <div className="space-y-5 text-[16px] font-light leading-[1.85] text-[#5c6884]">
               <p>
                 Forty-seven alerts in the queue. Each one demands the same
                 ritual: pull customer data from three different systems.
@@ -116,7 +112,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               This is what programmable trust looks like today — a human being,
               working at human speed, deciding piece by piece whether the
@@ -131,32 +127,32 @@ export default function AboutPage() {
 
           {/* Stat */}
           <Reveal className="my-10 flex items-baseline gap-4" delay={60}>
-            <span className="text-[3.5rem] font-light leading-none tracking-tight text-white">
+            <span className="text-[3.5rem] font-light leading-none tracking-tight text-[#0d1326]">
               $274B
             </span>
-            <span className="max-w-[240px] text-[14px] font-light leading-snug text-white/50">
+            <span className="max-w-[240px] text-[14px] font-light leading-snug text-[#5c6884]">
               spent on compliance globally each year — most of it paying people
               to do what machines should
             </span>
           </Reveal>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               This is not a training problem. Not a headcount problem. It is a
               structural failure — and it has persisted for decades because the
               technology to fix it did not exist.
             </p>
             <p>
-              <strong className="font-medium text-white">Until now.</strong>
+              <strong className="font-medium text-[#0d1326]">Until now.</strong>
             </p>
           </div>
         </Reveal>
 
         {/* ── The Inflection Point ── */}
-        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+        <Reveal as="section" className="border-b border-black/[0.08] py-20">
           <SectionLabel>The inflection point</SectionLabel>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               The breakthroughs in AI over the last two years have changed what
               is possible — not chatbots bolted onto compliance workflows, but
@@ -171,7 +167,7 @@ export default function AboutPage() {
           </div>
 
           <Reveal className="my-14 border-l-2 border-blue-400/40 pl-8" delay={80}>
-            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-white/90">
+            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-[#0d1326]">
               For the first time,{" "}
               <span className="not-italic text-blue-400">
                 trust can be verified programmatically
@@ -181,7 +177,7 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               We believe compliance should be one of the most intelligent
               functions inside any financial institution — not the most manual
@@ -194,10 +190,10 @@ export default function AboutPage() {
         </Reveal>
 
         {/* ── What We Are Building ── */}
-        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+        <Reveal as="section" className="border-b border-black/[0.08] py-20">
           <SectionLabel>What we are building</SectionLabel>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>An AI-native investigation layer for financial crime compliance.</p>
             <p>
               Specialized agents collaborate across alert triage, network
@@ -209,7 +205,7 @@ export default function AboutPage() {
             <p>
               We deploy as an intelligence layer over existing transaction
               monitoring systems.{" "}
-              <strong className="font-medium text-white">
+              <strong className="font-medium text-[#0d1326]">
                 No rip-and-replace. No 18-month migration.
               </strong>{" "}
               Teams see results in weeks, not quarters.
@@ -222,7 +218,7 @@ export default function AboutPage() {
         </Reveal>
 
         {/* ── How We Build ── */}
-        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+        <Reveal as="section" className="border-b border-black/[0.08] py-20">
           <SectionLabel>How we build</SectionLabel>
 
           <div className="flex flex-col">
@@ -230,14 +226,14 @@ export default function AboutPage() {
               <Reveal
                 key={item.name}
                 delay={40 + i * 50}
-                className={`grid gap-2 border-b border-white/[0.08] py-8 md:grid-cols-[180px_1fr] md:gap-8 ${
+                className={`grid gap-2 border-b border-black/[0.08] py-8 md:grid-cols-[180px_1fr] md:gap-8 ${
                   i === 0 ? "border-t" : ""
                 }`}
               >
-                <span className="pt-0.5 text-[13px] font-medium leading-snug text-white">
+                <span className="pt-0.5 text-[13px] font-medium leading-snug text-[#0d1326]">
                   {item.name}
                 </span>
-                <p className="text-[15px] font-light leading-[1.8] text-white/50">
+                <p className="text-[15px] font-light leading-[1.8] text-[#5c6884]">
                   {item.body}
                 </p>
               </Reveal>
@@ -246,7 +242,7 @@ export default function AboutPage() {
         </Reveal>
 
         {/* ── Where This Goes ── */}
-        <Reveal as="section" className="border-b border-white/[0.08] py-20">
+        <Reveal as="section" className="border-b border-black/[0.08] py-20">
           <SectionLabel>Where this goes</SectionLabel>
 
           <h2 className="mb-10 text-[clamp(1.6rem,3.5vw,2.4rem)] font-light leading-[1.25] tracking-tight">
@@ -255,7 +251,7 @@ export default function AboutPage() {
             — not overhead.
           </h2>
 
-          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-white/50">
+          <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>Compliance is just the beginning.</p>
             <p>
               The mechanisms for verifying trust today — slow, fragmented,
@@ -273,7 +269,7 @@ export default function AboutPage() {
           </div>
 
           <Reveal className="my-14 border-l-2 border-blue-400/40 pl-8" delay={80}>
-            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-white/90">
+            <p className="text-[clamp(1.2rem,2.5vw,1.5rem)] font-light italic leading-[1.5] text-[#0d1326]">
               When{" "}
               <span className="not-italic text-blue-400">
                 trust is programmable
@@ -283,14 +279,14 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          <p className="text-[17px] font-light leading-[1.82] text-white/50">
+          <p className="text-[17px] font-light leading-[1.82] text-[#5c6884]">
             That is the long game. And we are just getting started.
           </p>
         </Reveal>
 
         {/* ── CTA ── */}
         <Reveal className="py-20 text-center">
-          <p className="mx-auto max-w-md text-[15px] font-light leading-[1.75] text-white/50">
+          <p className="mx-auto max-w-md text-[15px] font-light leading-[1.75] text-[#5c6884]">
             We are looking for design partners, early believers, and people who
             think compliance deserves better technology. If that sounds like you,
             let&apos;s talk.
@@ -304,7 +300,7 @@ export default function AboutPage() {
             </Link>
             <a
               href="mailto:contact@polarisk.ai"
-              className="rounded-md border border-white/[0.15] px-6 py-2.5 text-[14px] text-white/50 transition hover:border-white/30 hover:text-white/80"
+              className="rounded-md border border-black/[0.12] px-6 py-2.5 text-[14px] text-[#5c6884] transition hover:border-[#3d5bff]/40 hover:text-[#0d1326]"
             >
               Email us
             </a>
