@@ -1,7 +1,5 @@
-"use client";
-
-import HeroIntro from "../components/HeroIntro";
+import HomePage from "../components/HomePage";
 
 export default function Page() {
-  return <HeroIntro />;
+  return <HomePage />;
 }
