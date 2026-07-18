@@ -1,0 +1,731 @@
+/* ============================================================
+   Polarisk landing v3 — "starlight" motion system
+   Scoped under .v3 so it never leaks into the rest of the site.
+   Motion identity: one easing curve, slow breathing glows,
+   constant drift. Nothing pulses on a clock; everything eases.
+   ============================================================ */
+
+.v3 {
+  --blue: #3d5bff;
+  --blue-soft: #6e85ff;
+  --danger: #e0654f;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* dark (intro) tokens */
+  --bg: #05070e;
+  --panel: #0b1120;
+  --line: rgba(150, 175, 220, 0.12);
+  --text: #edf1f8;
+  --dim: #8391a8;
+  --accent: var(--blue-soft);
+  --tickbg: rgba(11, 17, 32, 0.4);
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color 1.4s ease, color 1.4s ease;
+}
+.v3.light {
+  --bg: #f6f7fa;
+  --panel: #ffffff;
+  --line: rgba(13, 19, 38, 0.1);
+  --text: #0d1326;
+  --dim: #5c6884;
+  --accent: var(--blue);
+  --tickbg: rgba(255, 255, 255, 0.6);
+}
+
+.v3 ::selection {
+  background: rgba(61, 91, 255, 0.25);
+}
+.v3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.v3 .mono {
+  font-family: var(--font-jbmono), monospace;
+}
+
+/* ---------- shared keyframes (slow breath — the only loop) ---------- */
+@keyframes v3StarBreathe {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(61, 91, 255, 0.45));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(110, 133, 255, 0.85));
+  }
+}
+@keyframes v3Marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- NAV ---------- */
+.v3 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+}
+.v3:not(.light) nav {
+  background: linear-gradient(to bottom, rgba(5, 7, 14, 0.85), rgba(5, 7, 14, 0));
+}
+.v3.light nav {
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 247, 250, 0.9),
+    rgba(246, 247, 250, 0)
+  );
+}
+.v3 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: 14px;
+}
+.v3 .logo .mark {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+.v3 .logo .mark .a {
+  fill: currentColor;
+  transition: fill 1.4s ease;
+}
+/* logotype spacing: flex gap instead of letter-spacing, so the SVG A
+   gets exactly the same gap as every letter and there is no trailing space */
+.v3 .logotype {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.22em;
+  line-height: 1;
+}
+.v3 .logotype .glyphA {
+  height: 0.715em;
+  width: auto;
+  display: block;
+  fill: currentColor;
+}
+/* nav chrome stays hidden while the intro plays; fades in with light mode */
+.v3 .nav-links,
+.v3 .nav-cta {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease 0.4s;
+}
+.v3.light .nav-links,
+.v3.light .nav-cta {
+  opacity: 1;
+  pointer-events: auto;
+}
+.v3 .nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 13.5px;
+  color: var(--dim);
+}
+.v3 .nav-links a {
+  transition: color 0.2s;
+}
+.v3 .nav-links a:hover {
+  color: var(--text);
+}
+.v3 .nav-cta {
+  font-size: 13.5px;
+  font-weight: 500;
+  border: 1px solid rgba(61, 91, 255, 0.5);
+  color: var(--accent);
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease),
+    opacity 1s ease 0.4s;
+}
+.v3 .nav-cta:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ---------- HERO ---------- */
+.v3 .hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  overflow: hidden;
+}
+.v3 .net {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.6s ease;
+}
+.v3.light .net {
+  opacity: 0;
+}
+.v3 .hero-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+  background: radial-gradient(
+    ellipse 72% 58% at 50% 40%,
+    transparent 40%,
+    rgba(5, 7, 14, 0.6) 100%
+  );
+}
+.v3.light .hero-veil {
+  opacity: 0;
+}
+
+.v3 .lockup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 33%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.v3 .wordmark {
+  position: relative;
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 84px);
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--text);
+  white-space: nowrap;
+  transition: color 1.4s ease;
+}
+.v3 .ch {
+  display: inline-block;
+}
+.v3 .chInner {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s var(--ease);
+}
+.v3 .wordmark.on .chInner {
+  opacity: 1;
+  transform: none;
+}
+/* the A hosts the star, so the star is ALWAYS exactly above it */
+.v3 .aChar {
+  position: relative;
+  line-height: 0;
+}
+.v3 .aChar .glyphA {
+  height: 0.715em;
+  width: auto;
+  display: inline-block;
+  vertical-align: baseline;
+  fill: currentColor;
+}
+.v3 .polarStar {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.05em);
+  width: 0.4em;
+  height: auto;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.4);
+  transform-origin: center bottom;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+}
+.v3 .polarStar.on {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.v3 .polarStar.breathe {
+  animation: v3StarBreathe 5s ease-in-out infinite;
+}
+
+.v3 .hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52%;
+  text-align: center;
+  pointer-events: none;
+}
+/* copy arrives line by line: kicker → headline → sub-line → buttons */
+.v3 .hero-copy .rise {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.v3 .hero-copy.on .rise {
+  opacity: 1;
+  transform: none;
+}
+.v3 .hero-copy h1 .l1,
+.v3 .hero-copy h1 .l2 {
+  display: block;
+}
+.v3 .hero-copy .hero-actions {
+  pointer-events: none;
+}
+.v3 .hero-copy.on .hero-actions {
+  pointer-events: auto;
+}
+.v3 .kicker {
+  font-family: var(--font-jbmono);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.v3 .hero-copy h1 {
+  font-family: var(--font-grotesk);
+  font-weight: 500;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.35;
+  color: var(--text);
+  transition: color 1.4s ease;
+}
+.v3 .hero-copy h1 .l2 {
+  color: var(--dim);
+}
+
+/* ---------- CTA BUTTONS (no pulses, no sweeps — lift + shadow only) ---------- */
+.v3 .hero-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  pointer-events: auto;
+}
+.v3 .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-grotesk);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 14px 26px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
+    background 0.25s var(--ease), border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+.v3 .btn:hover {
+  transform: translateY(-2px);
+}
+.v3 .btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+.v3 .btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(61, 91, 255, 0.22);
+}
+.v3 .btn-primary:hover {
+  background: #4b67ff;
+  box-shadow: 0 14px 34px rgba(61, 91, 255, 0.35);
+}
+.v3 .btn-primary .bstar {
+  width: 13px;
+  height: auto;
+}
+
+.v3 .btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.v3 .btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.v3 .playIco {
+  width: 11px;
+  height: auto;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease);
+}
+.v3 .btn-ghost:hover .playIco {
+  transform: translateX(2px);
+}
+.v3 .btn-ghost .arrow {
+  display: inline-block;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease);
+}
+.v3 .btn-ghost:hover .arrow {
+  transform: translateX(3px);
+}
+
+.v3 .replay {
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  z-index: 5;
+  font-family: var(--font-jbmono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 7px 12px;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease),
+    opacity 1s ease 0.8s;
+}
+/* only appears once the intro has finished (light mode reached) */
+.v3.light .replay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.v3 .replay:hover {
+  color: var(--accent);
+  border-color: rgba(61, 91, 255, 0.5);
+}
+
+/* ---------- TICKER (constant glide — CSS marquee) ---------- */
+.v3 .ticker {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-jbmono);
+  font-size: 12px;
+  color: var(--dim);
+  padding: 13px 0;
+  background: var(--tickbg);
+  transition: background-color 1.4s ease, border-color 1.4s ease;
+}
+.v3 .tickerTrack {
+  display: inline-flex;
+  will-change: transform;
+  animation: v3Marquee 56s linear infinite;
+}
+.v3 .tickerGroup {
+  display: inline-block;
+}
+.v3 .ticker span {
+  margin: 0 34px;
+}
+.v3 .ticker b {
+  color: var(--accent);
+  font-weight: 500;
+}
+.v3 .ticker i {
+  color: var(--danger);
+  font-style: normal;
+}
+
+/* ---------- SECTIONS ---------- */
+.v3 section {
+  padding: 130px 40px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.v3 .eyebrow {
+  font-family: var(--font-jbmono);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.v3 h2 {
+  font-family: var(--font-grotesk);
+  font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  max-width: 720px;
+}
+.v3 .lede {
+  margin-top: 22px;
+  max-width: 600px;
+  color: var(--dim);
+  font-size: 17px;
+}
+.v3 .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 1.1s var(--ease), transform 1.1s var(--ease);
+}
+.v3 .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- JOURNEY ---------- */
+.v3 .journey {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 64px;
+}
+.v3 .lane {
+  background: var(--panel);
+  padding: 42px 40px;
+  transition: background-color 1.4s ease;
+}
+.v3 .lane h3 {
+  font-family: var(--font-grotesk);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.v3 .lane .tag {
+  font-family: var(--font-jbmono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.v3 .lane.old h3 .tag {
+  color: var(--danger);
+}
+.v3 .lane.new h3 .tag {
+  color: var(--accent);
+}
+.v3 .step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--dim);
+}
+.v3 .step .n {
+  font-family: var(--font-jbmono);
+  font-size: 11px;
+  width: 22px;
+  opacity: 0.6;
+}
+.v3 .lane.new .step {
+  color: var(--text);
+}
+.v3 .lane.new .step .n {
+  color: var(--accent);
+  opacity: 1;
+}
+.v3 .lane .result {
+  margin-top: 34px;
+  font-family: var(--font-grotesk);
+  font-weight: 600;
+  font-size: 34px;
+  letter-spacing: -0.01em;
+}
+.v3 .lane.old .result {
+  color: var(--danger);
+}
+.v3 .lane.new .result {
+  color: var(--accent);
+}
+.v3 .lane .result small {
+  display: block;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--dim);
+  margin-top: 6px;
+  letter-spacing: 0;
+}
+
+/* ---------- HOW IT WORKS (funnel) ----------
+   The funnel visual is the site's dark-themed component; it sits inside a
+   dark panel so the "system view" reads as a window back into the dark.
+   Panel bg must stay #080c14 — the funnel's taper masks are that color. */
+.v3 .funnelPanel {
+  margin-top: 64px;
+  background: #080c14;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 40px 32px;
+}
+@media (max-width: 860px) {
+  .v3 .funnelPanel {
+    padding: 24px 16px;
+  }
+}
+
+/* ---------- AGENTS ---------- */
+.v3 .agents {
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+}
+.v3 .agent {
+  display: grid;
+  grid-template-columns: 60px 260px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 28px 8px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.35s var(--ease);
+  cursor: default;
+}
+.v3 .agent:hover {
+  background: rgba(61, 91, 255, 0.05);
+}
+.v3 .agent .idx {
+  font-family: var(--font-jbmono);
+  font-size: 12px;
+  color: var(--dim);
+}
+.v3 .agent .name {
+  font-family: var(--font-grotesk);
+  font-size: 19px;
+  font-weight: 500;
+}
+.v3 .agent .does {
+  color: var(--dim);
+  font-size: 15px;
+}
+.v3 .agent .live {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-jbmono);
+  font-size: 12px;
+  color: var(--accent);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+.v3 .agent:hover .live {
+  max-height: 24px;
+  opacity: 1;
+}
+
+/* ---------- NUMBERS ---------- */
+.v3 .nums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-top: 70px;
+}
+.v3 .num .big {
+  font-family: var(--font-grotesk);
+  font-weight: 700;
+  font-size: clamp(56px, 7vw, 96px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.v3 .num .big b {
+  color: var(--accent);
+  font-weight: 700;
+}
+.v3 .num .lbl {
+  margin-top: 14px;
+  color: var(--dim);
+  font-size: 15px;
+  max-width: 220px;
+}
+
+/* ---------- CLOSING CTA ---------- */
+.v3 .cta {
+  text-align: center;
+  padding: 150px 40px 170px;
+}
+.v3 .cta h2 {
+  margin: 0 auto;
+}
+.v3 .cta .hero-actions {
+  margin-top: 40px;
+}
+.v3 .cta .endstar {
+  margin: 0 auto 30px;
+  display: block;
+  animation: v3StarBreathe 5s ease-in-out infinite;
+}
+
+.v3 footer {
+  border-top: 1px solid var(--line);
+  padding: 34px 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+@media (max-width: 860px) {
+  .v3 nav {
+    padding: 16px 20px;
+  }
+  .v3 .nav-links {
+    display: none;
+  }
+  .v3 section {
+    padding: 90px 22px;
+  }
+  .v3 .journey {
+    grid-template-columns: 1fr;
+  }
+  .v3 .nums {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .v3 .agent {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .v3 .agent .does {
+    grid-column: 2;
+  }
+  .v3 .hero-copy {
+    top: 50%;
+  }
+  .v3 .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v3 .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .v3 .hero-copy .rise,
+  .v3 .nav-links,
+  .v3 .nav-cta,
+  .v3 .replay {
+    transition: none;
+  }
+  .v3 .polarStar.breathe,
+  .v3 .cta .endstar {
+    animation: none;
+  }
+  .v3 .tickerTrack {
+    animation: none;
+  }
+}
