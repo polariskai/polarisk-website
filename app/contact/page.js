@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  BookOpen,
   Building2,
   LifeBuoy,
   Mail,
@@ -44,14 +43,6 @@ const CHANNELS = [
     icon: Mail,
     cta: "contact@polarisk.ai",
     external: true,
-  },
-  {
-    title: "Changelog",
-    description: "See what we have shipped recently and what is coming next.",
-    href: "/changelog",
-    icon: BookOpen,
-    cta: "View changelog",
-    external: false,
   },
 ];
 
