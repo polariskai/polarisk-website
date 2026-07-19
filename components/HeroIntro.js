@@ -69,7 +69,7 @@ export default function HeroIntro({ onLightChange }) {
     let nodes = [];
     let edges = [];
     let txns = [];
-    let monoFont = "11px monospace";
+    let monoFont = "500 12px monospace";
     const target = { x: 0, y: 0 };
     let locked = { mark: false, star: false, copy: false, light: false };
     let disposed = false;
@@ -213,24 +213,28 @@ export default function HeroIntro({ onLightChange }) {
       }
 
       if (pFade < 1) {
+        ctx.save();
         ctx.font = monoFont;
+        ctx.shadowColor = "rgba(5,7,14,0.95)";
+        ctx.shadowBlur = 5;
         for (const x of txns) {
           const life = (t - x.born) / 2.2;
           if (life <= 0 || life >= 1) continue;
           const a = Math.sin(life * Math.PI) * (1 - pFade);
           if (a <= 0) continue;
-          ctx.fillStyle = `rgba(110,133,255,${0.9 * a})`;
+          ctx.fillStyle = `rgba(237,241,248,${a})`;
           ctx.fillText(x.l[0], x.x + 8, x.y - 4);
-          ctx.fillStyle = `rgba(131,145,168,${0.85 * a})`;
+          ctx.fillStyle = `rgba(190,201,220,${0.95 * a})`;
           ctx.fillText(x.l[1], x.x + 8, x.y + 9);
         }
         if (pFlag > 0) {
           for (const n of nodes) {
             if (!n.sanction) continue;
-            ctx.fillStyle = `rgba(224,101,79,${0.8 * pFlag * (1 - pFade)})`;
+            ctx.fillStyle = `rgba(255,126,92,${0.98 * pFlag * (1 - pFade)})`;
             ctx.fillText("SANCTIONED", n.x + 7, n.y - 6);
           }
         }
+        ctx.restore();
       }
 
       if (pConv > 0 && bloom < 1) {
@@ -283,7 +287,7 @@ export default function HeroIntro({ onLightChange }) {
       wordmark.classList.remove("on");
       star.classList.remove("on", "breathe");
       if (monoProbe) {
-        monoFont = `11px ${getComputedStyle(monoProbe).fontFamily}`;
+        monoFont = `500 12px ${getComputedStyle(monoProbe).fontFamily}`;
       }
       resize();
       measureTarget();
