@@ -21,8 +21,16 @@ export default function SiteHeader({ solid = false, tone = "light" }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const showBg = solid || scrolled || menuOpen;
   const isDark = tone === "dark";
+  // Hide About / Contact / Contact us while the homepage intro is playing
+  // (tone="dark"). Replay sets tone back to dark until light lands again.
+  const showNav = !isDark;
+
+  useEffect(() => {
+    if (!showNav) setMenuOpen(false);
+  }, [showNav]);
+
+  const showBg = solid || scrolled || menuOpen;
 
   const headerBg = isDark
     ? showBg
@@ -81,31 +89,37 @@ export default function SiteHeader({ solid = false, tone = "light" }) {
           <span className={wordmarkClass}>Polarisk</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.label} href={link.href} className={linkClass}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {showNav && (
+          <nav className="hidden items-center gap-6 md:flex">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.label} href={link.href} className={linkClass}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        )}
 
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className={ctaClass}>
-            Contact us
-          </Link>
-          <button
-            type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            className={menuBtnClass}
-          >
-            {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
+        {showNav ? (
+          <div className="flex items-center gap-3">
+            <Link href="/contact" className={ctaClass}>
+              Contact us
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className={menuBtnClass}
+            >
+              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
+        ) : (
+          <div aria-hidden="true" />
+        )}
       </div>
 
-      {menuOpen && (
+      {showNav && menuOpen && (
         <nav className={mobileNavClass}>
           <div className="mx-auto flex max-w-7xl flex-col px-6 py-4">
             {NAV_LINKS.map((link) => (

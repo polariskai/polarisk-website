@@ -39,14 +39,6 @@ function GlyphA({ className }) {
   );
 }
 
-function Star({ className, fill = "#3D5BFF" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 32" aria-hidden="true">
-      <path d={STAR_PATH} fill={fill} />
-    </svg>
-  );
-}
-
 function PlayIcon() {
   return (
     <svg className="playIco" viewBox="0 0 12 12" aria-hidden="true">
@@ -272,7 +264,6 @@ export default function HeroIntro({ onLightChange }) {
 
       if (t > 7.6 && !locked.star) {
         locked.star = true;
-        star.classList.add("on", "breathe");
       }
       if (t > 7.9 && !locked.mark) {
         locked.mark = true;
@@ -307,7 +298,6 @@ export default function HeroIntro({ onLightChange }) {
       build();
       if (reduced) {
         locked = { mark: true, star: true, copy: true, light: true };
-        star.classList.add("on");
         wordmark.classList.add("on");
         copy.classList.add("on");
         setLight(true);
@@ -390,12 +380,11 @@ export default function HeroIntro({ onLightChange }) {
               Every financial crime leaves a pattern.
             </span>
             <span className="l2 rise" style={{ transitionDelay: "1s" }}>
-              Polarisk finds these patterns.
+              Polarisk finds it.
             </span>
           </h1>
           <div className="hero-actions rise" style={{ transitionDelay: "1.8s" }}>
             <a className="btn btn-primary" href="/contact">
-              <Star className="bstar" fill="#fff" />
               Book a demo
             </a>
             <a className="btn btn-ghost" href="#how-it-works">
