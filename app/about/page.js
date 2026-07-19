@@ -8,22 +8,22 @@ import { pageMetadata } from "../../lib/seo";
 export const metadata = pageMetadata({
   title: "About | Polarisk",
   description:
-    "Polarisk is building the intelligence layer for financial crime compliance — fewer false positives, faster AML investigations, regulator-ready decisions.",
+    "Polarisk is building the intelligence layer for financial crime compliance - fewer false positives, faster AML investigations, regulator-ready decisions.",
   path: "/about/",
 });
 
 const PRINCIPLES = [
   {
     name: "Explainability is non-negotiable.",
-    body: "If we cannot show exactly why a decision was made, the decision is worthless. Every output carries a full evidence chain — not because regulators require it, but because trust without a reason isn\u2019t trust.",
+    body: "If we cannot show exactly why a decision was made, the decision is worthless. Every output carries a full evidence chain - not because regulators require it, but because trust without a reason isn\u2019t trust.",
   },
   {
     name: "Designed for humans.",
-    body: "The best compliance outcomes come from AI speed combined with human judgment. We build for that partnership. The analyst\u2019s expertise is not the bottleneck — the tooling around them is. And creativity is not a luxury - it is a necessity. Good design enables this.",
+    body: "The best compliance outcomes come from AI speed combined with human judgment. We build for that partnership. The analyst\u2019s expertise is not the bottleneck - the tooling around them is. And creativity is not a luxury - it is a necessity. Good design enables this.",
   },
   {
     name: "Earn trust through outcomes.",
-    body: "We measure ourselves on false positive reduction, investigation speed, and narrative quality — not feature counts. Our product succeeds when the compliance function earns more trust from the institution it serves.",
+    body: "We measure ourselves on false positive reduction, investigation speed, and narrative quality - not feature counts. Our product succeeds when the compliance function earns more trust from the institution it serves.",
   },
   {
     name: "Deploy in weeks, not years.",
@@ -59,7 +59,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-8 max-w-[580px] text-[17px] font-light leading-[1.75] text-[#5c6884]">
             Polarisk is building the infrastructure for programmable trust in
-            financial crime compliance. Today, that trust is assembled by hand —
+            financial crime compliance. Today, that trust is assembled by hand -
             one analyst, one alert, one decision at a time.
           </p>
         </Reveal>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             delay={80}
           >
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.1em] text-blue-400/50">
-              9:00 AM — compliance desk, major bank
+              9:00 AM - compliance desk, major bank
             </p>
             <div className="space-y-5 text-[16px] font-light leading-[1.85] text-[#5c6884]">
               <p>
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
           <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
-              This is what programmable trust looks like today — a human being,
+              This is what programmable trust looks like today... A human being,
               working at human speed, deciding piece by piece whether the
               financial system should trust each transaction, each account, each
               relationship.
@@ -131,7 +131,7 @@ export default function AboutPage() {
               $274B
             </span>
             <span className="max-w-[240px] text-[14px] font-light leading-snug text-[#5c6884]">
-              spent on compliance globally each year — most of it paying people
+              spent on compliance globally each year - most of it paying people
               to do what machines should
             </span>
           </Reveal>
@@ -139,7 +139,7 @@ export default function AboutPage() {
           <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               This is not a training problem. Not a headcount problem. It is a
-              structural failure — and it has persisted for decades because the
+              structural failure - and it has persisted for decades because the
               technology to fix it did not exist.
             </p>
             <p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
           <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               The breakthroughs in AI over the last two years have changed what
-              is possible — not chatbots bolted onto compliance workflows, but
+              is possible - not chatbots bolted onto compliance workflows, but
               real investigative intelligence.
             </p>
             <p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
               <span className="not-italic text-blue-400">
                 trust can be verified programmatically
               </span>{" "}
-              — in minutes, not days, without the noise of a thousand false
+              - in minutes, not days, without the noise of a thousand false
               positives drowning out the signals that matter.
             </p>
           </Reveal>
@@ -180,7 +180,7 @@ export default function AboutPage() {
           <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>
               We believe compliance should be one of the most intelligent
-              functions inside any financial institution — not the most manual
+              functions inside any financial institution - not the most manual
               one. The technology to make that true now exists.
             </p>
             <p>
@@ -198,7 +198,7 @@ export default function AboutPage() {
             <p>
               Specialized agents collaborate across alert triage, network
               analysis, external verification, quality control, and narrative
-              generation — compressing hours of manual work into minutes. Every
+              generation - compressing hours of manual work into minutes. Every
               recommendation is traceable. Every decision is auditable. Analysts
               stay in control.
             </p>
@@ -248,15 +248,15 @@ export default function AboutPage() {
           <h2 className="mb-10 text-[clamp(1.6rem,3.5vw,2.4rem)] font-light leading-[1.25] tracking-tight">
             A world where{" "}
             <em className="italic text-blue-400">trust is infrastructure</em>{" "}
-            — not overhead.
+            - not overhead.
           </h2>
 
           <div className="space-y-7 text-[17px] font-light leading-[1.82] text-[#5c6884]">
             <p>Compliance is just the beginning.</p>
             <p>
-              The mechanisms for verifying trust today — slow, fragmented,
+              The mechanisms for verifying trust today - slow, fragmented,
               manual, scattered across institutions that rarely talk to each
-              other — were designed for a different era. The financial system has
+              other - were designed for a different era. The financial system has
               scaled enormously. The trust verification layer beneath it has not.
             </p>
             <p>
