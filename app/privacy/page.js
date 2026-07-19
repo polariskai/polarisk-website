@@ -15,24 +15,20 @@ const LAST_UPDATED = "July 17, 2026";
 export default function PrivacyPage() {
   return (
     <>
-      <SiteHeader solid />
-      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
-        </div>
+      <SiteHeader solid tone="light" />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#f6f7fa] px-6 pb-24 pt-14 text-[#0d1326]">
 
         <div className="relative mx-auto max-w-[680px]">
-          <header className="border-b border-white/[0.08] pb-10 pt-16">
+          <header className="border-b border-black/[0.08] pb-10 pt-16">
             <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-semibold tracking-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-[14px] text-white/55">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-4 text-[14px] text-[#5c6884]">Last updated: {LAST_UPDATED}</p>
           </header>
 
-          <div className="space-y-10 py-12 text-[15px] leading-relaxed text-white/65">
+          <div className="space-y-10 py-12 text-[15px] leading-relaxed text-[#5c6884]">
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Overview</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Overview</h2>
               <p>
                 This Privacy Policy describes how Polarisk.ai Private Limited (&quot;Polarisk&quot;,
                 &quot;we&quot;, &quot;us&quot;) handles information collected through
@@ -44,12 +40,12 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Information we collect</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Information we collect</h2>
               <ul className="ml-5 list-disc space-y-2">
                 <li>
                   Contact details you provide, such as name, email address, and
                   company, when you reach out through a form or a{" "}
-                  <span className="text-white/85">mailto:</span> link.
+                  <span className="text-[#0d1326]">mailto:</span> link.
                 </li>
                 <li>
                   Basic usage data collected via Google Analytics (e.g. pages
@@ -59,7 +55,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">How we use it</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">How we use it</h2>
               <p>
                 We use the information above to respond to inquiries, operate and
                 improve the Site, and understand how visitors use our content. We do
@@ -68,7 +64,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Sharing</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Sharing</h2>
               <p>
                 We share information with service providers who help us run the
                 Site (such as analytics and email providers), and only to the
@@ -79,7 +75,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Your choices</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Your choices</h2>
               <p>
                 You can ask us to access, correct, or delete personal information
                 you have submitted to us by emailing{" "}
@@ -94,7 +90,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Changes to this policy</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Changes to this policy</h2>
               <p>
                 We may update this policy from time to time. Material changes will
                 be reflected by updating the &quot;Last updated&quot; date above.
@@ -102,7 +98,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Contact</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Contact</h2>
               <p>
                 Questions about this policy can be sent to{" "}
                 <a
@@ -116,10 +112,10 @@ export default function PrivacyPage() {
             </section>
           </div>
 
-          <div className="border-t border-white/[0.08] py-8">
+          <div className="border-t border-black/[0.08] py-8">
             <Link
               href="/"
-              className="text-[13px] text-white/55 transition-colors hover:text-white/85"
+              className="text-[13px] text-[#5c6884] transition-colors hover:text-[#0d1326]"
             >
               Back to home
             </Link>

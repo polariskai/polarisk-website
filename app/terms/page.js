@@ -14,24 +14,20 @@ const LAST_UPDATED = "July 17, 2026";
 export default function TermsPage() {
   return (
     <>
-      <SiteHeader solid />
-      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
-        </div>
+      <SiteHeader solid tone="light" />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#f6f7fa] px-6 pb-24 pt-14 text-[#0d1326]">
 
         <div className="relative mx-auto max-w-[680px]">
-          <header className="border-b border-white/[0.08] pb-10 pt-16">
+          <header className="border-b border-black/[0.08] pb-10 pt-16">
             <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-semibold tracking-tight">
               Terms of Use
             </h1>
-            <p className="mt-4 text-[14px] text-white/55">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-4 text-[14px] text-[#5c6884]">Last updated: {LAST_UPDATED}</p>
           </header>
 
-          <div className="space-y-10 py-12 text-[15px] leading-relaxed text-white/65">
+          <div className="space-y-10 py-12 text-[15px] leading-relaxed text-[#5c6884]">
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Scope</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Scope</h2>
               <p>
                 These Terms of Use govern your access to and use of polarisk.ai (the
                 &quot;Site&quot;), operated by Polarisk.ai Private Limited (&quot;Polarisk&quot;,
@@ -42,7 +38,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Use of the Site</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Use of the Site</h2>
               <p>
                 You may browse the Site and contact us for legitimate business
                 purposes. You agree not to misuse the Site, attempt to gain
@@ -52,7 +48,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">No warranty</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">No warranty</h2>
               <p>
                 Content on the Site — including product descriptions, statistics,
                 and screenshots — is provided for informational purposes and may
@@ -62,7 +58,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Intellectual property</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Intellectual property</h2>
               <p>
                 The Polarisk name, logo, and Site content are owned by Polarisk.ai
                 Private Limited or its licensors and may not be used without prior written
@@ -71,7 +67,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Changes</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Changes</h2>
               <p>
                 We may update these Terms from time to time. Continued use of the
                 Site after changes are posted constitutes acceptance of the revised
@@ -80,7 +76,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="mb-3 text-[18px] font-semibold text-white">Contact</h2>
+              <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">Contact</h2>
               <p>
                 Questions about these Terms can be sent to{" "}
                 <a
@@ -94,10 +90,10 @@ export default function TermsPage() {
             </section>
           </div>
 
-          <div className="border-t border-white/[0.08] py-8">
+          <div className="border-t border-black/[0.08] py-8">
             <Link
               href="/"
-              className="text-[13px] text-white/55 transition-colors hover:text-white/85"
+              className="text-[13px] text-[#5c6884] transition-colors hover:text-[#0d1326]"
             >
               Back to home
             </Link>

@@ -13,29 +13,25 @@ const BULLETS = [
 export default function ContactSalesPage() {
   return (
     <>
-      <SiteHeader solid />
-      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#080c14] px-6 pb-24 pt-14 text-white">
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="animated-orb absolute left-1/2 top-[-140px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:42px_42px]" />
-      </div>
+      <SiteHeader solid tone="light" />
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-[#f6f7fa] px-6 pb-24 pt-14 text-[#0d1326]">
 
       <div className="relative mx-auto max-w-[720px]">
         <div className="pb-4 pt-6">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-[13px] text-white/55 transition-colors hover:text-white/80"
+            className="inline-flex items-center gap-2 text-[13px] text-[#5c6884] transition-colors hover:text-[#0d1326]"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Contact
           </Link>
         </div>
 
-        <header className="border-b border-white/[0.08] pb-12 pt-8">
+        <header className="border-b border-black/[0.08] pb-12 pt-8">
           <h1 className="text-[clamp(2rem,5vw,2.75rem)] font-semibold tracking-tight">
             Contact sales
           </h1>
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-white/55">
+          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-[#5c6884]">
             Tell us how we can help. Email{" "}
             <a
               href="mailto:contact@polarisk.ai"
@@ -49,7 +45,7 @@ export default function ContactSalesPage() {
             {BULLETS.map((line) => (
               <li
                 key={line}
-                className="flex items-start gap-3 text-[14px] leading-relaxed text-white/55"
+                className="flex items-start gap-3 text-[14px] leading-relaxed text-[#5c6884]"
               >
                 <Check
                   className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-400"
@@ -62,17 +58,17 @@ export default function ContactSalesPage() {
         </header>
 
         <section className="pt-10">
-          <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-6 py-12 text-center">
-            <h2 className="text-[20px] font-semibold tracking-tight text-white">
+          <div className="rounded-xl border border-black/[0.08] bg-[#f3f5f9] px-6 py-12 text-center">
+            <h2 className="text-[20px] font-semibold tracking-tight text-[#0d1326]">
               Speak with our team
             </h2>
-            <p className="mx-auto mt-3 max-w-[520px] text-[15px] leading-relaxed text-white/50">
+            <p className="mx-auto mt-3 max-w-[520px] text-[15px] leading-relaxed text-[#5c6884]">
               Tell us your goals and timeline, and we will follow up to arrange a
               meeting.
             </p>
             <a
               href="mailto:contact@polarisk.ai"
-              className="mt-6 inline-flex items-center justify-center rounded-md border border-white/[0.12] px-5 py-2.5 text-[14px] text-white/75 transition-all hover:border-white/25 hover:text-white"
+              className="mt-6 inline-flex items-center justify-center rounded-md border border-black/[0.12] px-5 py-2.5 text-[14px] text-[#5c6884] transition-all hover:border-[#3d5bff]/40 hover:text-[#0d1326]"
             >
               Email contact@polarisk.ai
             </a>
