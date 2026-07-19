@@ -93,7 +93,12 @@ export default function HomePage() {
               thousands of alerts down to genuine risks.
             </p>
           </ScrollReveal>
-          <div className="overflow-hidden rounded-xl border border-black/[0.08] bg-[#0b1120] p-4 md:p-6">
+        </div>
+        <div className="mx-auto max-w-5xl lg:max-w-none lg:w-[80vw]">
+          <div
+            className="overflow-hidden rounded-xl border border-black/[0.08] bg-white p-4 md:p-6"
+            style={{ boxShadow: "0 12px 40px rgba(13,19,38,0.08)" }}
+          >
             <FunnelAnimation />
           </div>
         </div>
@@ -686,12 +691,6 @@ llm:
               Contact us
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <a
-              href="mailto:contact@polarisk.ai"
-              className="text-[13px] text-[#5c6884] transition-colors hover:text-[#0d1326]"
-            >
-              contact@polarisk.ai
-            </a>
           </div>
         </div>
       </section>

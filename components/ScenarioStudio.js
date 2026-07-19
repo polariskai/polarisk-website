@@ -137,14 +137,10 @@ export default function ScenarioStudio() {
   return (
     <section id="scenario-studio" className="border-t border-black/[0.06] px-6 py-24">
       <div className="mt-12 text-center">
-          <span
-            className={`text-[11px] font-medium uppercase tracking-widest text-[#3d5bff] transition-opacity duration-700 ${
-              phase >= 5 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            Scenario Studio
-          </span>
-        </div>
+        <span className="text-[11px] font-medium uppercase tracking-widest text-[#3d5bff]">
+          Scenario Studio
+        </span>
+      </div>
       <div className="mx-auto max-w-5xl">
         {/* Cinematic narrative */}
         <div className="mx-auto mb-14 max-w-2xl text-center">
@@ -391,13 +387,13 @@ export default function ScenarioStudio() {
 
         {/* Tagline */}
         <div className="mt-12 text-center">
-          <span
+          {/* <span
             className={`text-[11px] font-medium uppercase tracking-widest text-[#3d5bff] transition-opacity duration-700 ${
               phase >= 5 ? "opacity-100" : "opacity-0"
             }`}
           >
             Scenario Studio
-          </span>
+          </span> */}
           <div className="mt-3 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {TAGLINE.map((word, i) => (
               <span

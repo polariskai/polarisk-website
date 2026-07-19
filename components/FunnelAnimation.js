@@ -32,7 +32,7 @@ const AGENT_LABELS = [
 ];
 
 const FUNNEL_PARTICLES = [
-  { color: "#22c55e", isRed: false, delay: 0.0, dur: 3.8, y0: 10, y1: 5, x1: 62, size: 5 },
+  { color: "#22c55e", isRed: false, delay: 0.0, dur: 3.8, y0: 10, y1: 15, x1: 62, size: 5 },
   { color: "#eab308", isRed: false, delay: 0.3, dur: 3.6, y0: 22, y1: 16, x1: 68, size: 4 },
   { color: "#22c55e", isRed: false, delay: 0.6, dur: 3.5, y0: 30, y1: 22, x1: 58, size: 5 },
   { color: "#ef4444", isRed: true, delay: 0.8, dur: 4.2, y0: 18, y1: 42, x1: 96, size: 6 },
@@ -40,7 +40,7 @@ const FUNNEL_PARTICLES = [
   { color: "#eab308", isRed: false, delay: 1.5, dur: 3.3, y0: 48, y1: 40, x1: 64, size: 4 },
   { color: "#22c55e", isRed: false, delay: 1.8, dur: 3.6, y0: 75, y1: 82, x1: 55, size: 4 },
   { color: "#ef4444", isRed: true, delay: 2.0, dur: 4.0, y0: 52, y1: 48, x1: 96, size: 6 },
-  { color: "#22c55e", isRed: false, delay: 2.4, dur: 3.4, y0: 88, y1: 92, x1: 60, size: 5 },
+  { color: "#22c55e", isRed: false, delay: 2.4, dur: 3.4, y0: 88, y1: 85, x1: 60, size: 5 },
   { color: "#eab308", isRed: false, delay: 2.7, dur: 3.8, y0: 70, y1: 78, x1: 60, size: 4 },
   { color: "#22c55e", isRed: false, delay: 3.0, dur: 3.7, y0: 20, y1: 15, x1: 58, size: 5 },
   { color: "#ef4444", isRed: true, delay: 3.3, dur: 4.4, y0: 78, y1: 55, x1: 96, size: 6 },
@@ -76,7 +76,7 @@ export default function FunnelAnimation() {
             return (
               <div
                 key={s.label}
-                className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2"
+                className="flex items-center gap-2 rounded-lg border border-black/[0.08] bg-[#f3f5f9] px-3 py-2"
                 style={{
                   opacity: isActive ? 1 : 0,
                   transform: isActive ? "translateX(0)" : "translateX(-20px)",
@@ -85,7 +85,7 @@ export default function FunnelAnimation() {
                 }}
               >
                 <Icon className="h-3.5 w-3.5 shrink-0 text-blue-400" />
-                <span className="whitespace-nowrap text-[11px] text-white/60">
+                <span className="whitespace-nowrap text-[11px] text-[#5c6884]">
                   {s.label}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export default function FunnelAnimation() {
 
         {/* Processing Funnel */}
         <div
-          className="relative w-full flex-1 overflow-hidden rounded-xl border border-white/[0.06]"
+          className="relative w-full flex-1 overflow-hidden rounded-xl border border-black/[0.06]"
           style={{
             background:
               "linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0.02) 100%)",
@@ -146,14 +146,14 @@ export default function FunnelAnimation() {
             className="pointer-events-none absolute inset-0 z-20"
             style={{
               clipPath: "polygon(40% 0, 100% 0, 100% 22%)",
-              background: "#080c14",
+              background: "#ffffff",
             }}
           />
           <div
             className="pointer-events-none absolute inset-0 z-20"
             style={{
               clipPath: "polygon(40% 100%, 100% 78%, 100% 100%)",
-              background: "#080c14",
+              background: "#ffffff",
             }}
           />
 
@@ -177,14 +177,14 @@ export default function FunnelAnimation() {
               transition: "opacity 0.6s ease 0.8s",
             }}
           >
-            <span className="text-[10px] font-medium uppercase tracking-widest text-blue-400/80">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-[#3d5bff]/80">
               AI Agent Swarm
             </span>
             <div className="flex flex-wrap justify-center gap-1.5">
               {AGENT_LABELS.map((agent) => (
                 <span
                   key={agent}
-                  className="rounded-md border border-blue-400/20 bg-blue-500/10 px-2 py-1 text-[9px] font-medium text-white/75"
+                  className="rounded-md border border-blue-400/20 bg-blue-500/10 px-2 py-1 text-[9px] font-medium text-[#3d5bff]"
                 >
                   {agent}
                 </span>
@@ -192,12 +192,12 @@ export default function FunnelAnimation() {
             </div>
           </div>
 
-          {/* Hide layer until intersecting: paused keyframes + fill-mode still paint; parent opacity avoids any stray flash. */}
+          {/* Hide layer until intersecting: paused keyframes + fill-mode still paint; parent opacity avoids any stray flash.
+              Uses the same inset-0 (0-100%) coordinate space as the taper masks below, so particle y0/y1 values
+              stay within the funnel's actual visible taper instead of drifting under the corner cutouts. */}
           <div
             className="pointer-events-none absolute inset-0 z-10"
             style={{
-              top: "20%",
-              bottom: "5%",
               opacity: isActive ? 1 : 0,
               transition: "opacity 0.3s ease",
             }}
@@ -292,17 +292,17 @@ export default function FunnelAnimation() {
               />
             ))}
           </div>
-          <span className="text-center text-[13px] font-medium text-red-400/90">
+          <span className="text-center text-[13px] font-medium text-red-600">
             True Risk Alerts
           </span>
           <div className="flex flex-col items-stretch gap-1.5 w-full">
             {["Insider Trading", "Market Manipulation", "AML", "CDD / EDD", "Sanction Screening"].map((label) => (
               <div
                 key={label}
-                className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2"
+                className="flex items-center gap-2 rounded-lg border border-black/[0.08] bg-[#f3f5f9] px-3 py-2"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-red-400/80 shrink-0" />
-                <span className="text-[10px] leading-tight text-white/60">{label}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-red-500 shrink-0" />
+                <span className="text-[10px] leading-tight text-[#5c6884]">{label}</span>
               </div>
             ))}
           </div>
@@ -322,21 +322,21 @@ export default function FunnelAnimation() {
             className="h-2 w-2 rounded-full bg-green-400"
             style={{ boxShadow: "0 0 4px #22c55e" }}
           />
-          <span className="text-[10px] text-white/50">Cleared</span>
+          <span className="text-[10px] text-[#5c6884]">Cleared</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div
             className="h-2 w-2 rounded-full bg-yellow-400"
             style={{ boxShadow: "0 0 4px #eab308" }}
           />
-          <span className="text-[10px] text-white/50">Low Risk</span>
+          <span className="text-[10px] text-[#5c6884]">Low Risk</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div
             className="h-2 w-2 rounded-full bg-red-400"
             style={{ boxShadow: "0 0 4px #ef4444" }}
           />
-          <span className="text-[10px] text-white/50">True Risk</span>
+          <span className="text-[10px] text-[#5c6884]">True Risk</span>
         </div>
       </div>
     </div>
