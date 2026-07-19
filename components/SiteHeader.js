@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
+import PolariskWordmark from "./PolariskWordmark";
 
-const NAV_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+const NAV_LINKS = [{ label: "About", href: "/about" }];
 
 export default function SiteHeader({ solid = false, tone = "light" }) {
   const [scrolled, setScrolled] = useState(false);
@@ -44,9 +42,7 @@ export default function SiteHeader({ solid = false, tone = "light" }) {
     ? "/polarisk-logo-white.svg"
     : "/polarisk-logo-black.svg";
 
-  const wordmarkClass = isDark
-    ? "text-[15px] font-semibold tracking-tight text-white"
-    : "text-[15px] font-semibold tracking-tight text-[#0d1326]";
+  const wordmarkClass = isDark ? "text-white" : "text-[#0d1326]";
 
   const linkClass = isDark
     ? "text-[13px] text-white/50 transition-colors hover:text-white/90"
@@ -86,21 +82,20 @@ export default function SiteHeader({ solid = false, tone = "light" }) {
             className="h-7 w-7 object-contain"
             priority
           />
-          <span className={wordmarkClass}>Polarisk</span>
+          <PolariskWordmark className={`h-[12px] w-auto ${wordmarkClass}`} />
         </Link>
 
-        {showNav && (
-          <nav className="hidden items-center gap-6 md:flex">
+        {showNav ? (
+          <div className="flex items-center gap-5">
             {NAV_LINKS.map((link) => (
-              <Link key={link.label} href={link.href} className={linkClass}>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`hidden md:inline ${linkClass}`}
+              >
                 {link.label}
               </Link>
             ))}
-          </nav>
-        )}
-
-        {showNav ? (
-          <div className="flex items-center gap-3">
             <Link href="/contact" className={ctaClass}>
               Contact us
             </Link>

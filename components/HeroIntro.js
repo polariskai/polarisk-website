@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import PolariskWordmark from "./PolariskWordmark";
 import "./HeroIntro.css";
 
 const grotesk = Space_Grotesk({
@@ -18,7 +19,6 @@ const jbmono = JetBrains_Mono({
 
 const STAR_PATH =
   "M12 0 L14.6 17 L22 20 L14.6 23 L12 32 L9.4 23 L2 20 L9.4 17 Z";
-const A_PATH = "M37 0 L74 72 L59.5 72 L37 23.5 L14.5 72 L0 72 Z";
 
 const TXN_LABELS = [
   ["$95,000", "SGP"],
@@ -30,14 +30,6 @@ const TXN_LABELS = [
   ["CHF 210K", "ZRH"],
   ["$66,000", "PAN"],
 ];
-
-function GlyphA({ className }) {
-  return (
-    <svg className={className || "glyphA"} viewBox="0 0 74 72" aria-hidden="true">
-      <path d={A_PATH} fill="currentColor" />
-    </svg>
-  );
-}
 
 function PlayIcon() {
   return (
@@ -341,45 +333,25 @@ export default function HeroIntro({ onLightChange }) {
 
         <div className="lockup">
           <div className="wordmark" ref={wordmarkRef}>
-            {"POLARISK".split("").map((c, i) =>
-              c === "A" ? (
-                <span key={i} className="ch aChar">
-                  <svg
-                    ref={starRef}
-                    className="polarStar"
-                    viewBox="0 0 24 32"
-                    aria-hidden="true"
-                  >
-                    <path d={STAR_PATH} fill="#3D5BFF" />
-                  </svg>
-                  <span
-                    className="chInner"
-                    style={{ transitionDelay: `${i * 0.06}s` }}
-                  >
-                    <GlyphA />
-                  </span>
-                </span>
-              ) : (
-                <span key={i} className="ch">
-                  <span
-                    className="chInner"
-                    style={{ transitionDelay: `${i * 0.06}s` }}
-                  >
-                    {c}
-                  </span>
-                </span>
-              )
-            )}
+            <svg
+              ref={starRef}
+              className="polarStar"
+              viewBox="0 0 24 32"
+              aria-hidden="true"
+            >
+              <path d={STAR_PATH} fill="#3D5BFF" />
+            </svg>
+            <PolariskWordmark className="markSvg" label="Polarisk" />
           </div>
         </div>
 
         <div className="hero-copy" ref={copyRef}>
           <div className="kicker rise">Financial crime intelligence</div>
           <h1>
-            <span className="l1 rise" style={{ transitionDelay: "0.25s" }}>
+          <span className="l2 rise" style={{ transitionDelay: "0.25s" }}>
               Every financial crime leaves a pattern.
             </span>
-            <span className="l2 rise" style={{ transitionDelay: "1s" }}>
+            <span className="l1 rise" style={{ transitionDelay: "1s" }}>
               Polarisk finds it.
             </span>
           </h1>
@@ -387,10 +359,10 @@ export default function HeroIntro({ onLightChange }) {
             <a className="btn btn-primary" href="/contact">
               Book a demo
             </a>
-            <a className="btn btn-ghost" href="#how-it-works">
+            {/* <a className="btn btn-ghost" href="#how-it-works">
               <PlayIcon />
               Watch an investigation
-            </a>
+            </a> */}
           </div>
         </div>
         <button className="replay" type="button">

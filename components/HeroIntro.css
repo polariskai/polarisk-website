@@ -108,33 +108,21 @@
   white-space: nowrap;
   transition: color 1.4s ease;
 }
-.hero-intro .ch {
-  display: inline-block;
-}
-.hero-intro .chInner {
-  display: inline-block;
+.hero-intro .markSvg {
+  display: block;
+  height: 0.72em;
+  width: auto;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.7s ease, transform 0.7s var(--ease);
 }
-.hero-intro .wordmark.on .chInner {
+.hero-intro .wordmark.on .markSvg {
   opacity: 1;
   transform: none;
 }
-.hero-intro .aChar {
-  position: relative;
-  line-height: 0;
-}
-.hero-intro .aChar .glyphA {
-  height: 0.715em;
-  width: auto;
-  display: inline-block;
-  vertical-align: baseline;
-  fill: currentColor;
-}
 .hero-intro .polarStar {
   position: absolute;
-  left: 50%;
+  left: 46.1%;
   bottom: calc(100% + 0.05em);
   width: 0.4em;
   height: auto;

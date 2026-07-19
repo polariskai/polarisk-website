@@ -25,6 +25,7 @@ import ScrollReveal from "./ScrollReveal";
 import FunnelAnimation from "./FunnelAnimation";
 import ProviderLogo from "./ProviderLogo";
 import HeroIntro from "./HeroIntro";
+import ScenarioStudio from "./ScenarioStudio";
 
 const polariskLogo = "/polarisk-logo.svg";
 
@@ -97,6 +98,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ScenarioStudio />
 
       <section className="border-t border-black/[0.06] px-6 py-24">
         <div className="mx-auto max-w-5xl">

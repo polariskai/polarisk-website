@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import PolariskWordmark from "./PolariskWordmark";
 
 const FOOTER_LINKS = [
   { label: "About", href: "/about" },
@@ -20,9 +21,7 @@ export default function SiteFooter() {
             height={20}
             className="h-5 w-5 object-contain"
           />
-          <span className="text-[13px] font-semibold text-[#5c6884]">
-            Polarisk
-          </span>
+          <PolariskWordmark className="h-[11px] w-auto text-[#5c6884]" />
         </Link>
         <div className="flex flex-wrap items-center justify-center gap-6">
           {FOOTER_LINKS.map((link) => (
