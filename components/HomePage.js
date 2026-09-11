@@ -26,6 +26,7 @@ import FunnelAnimation from "./FunnelAnimation";
 import ProviderLogo from "./ProviderLogo";
 import HeroIntro from "./HeroIntro";
 import ScenarioStudio from "./ScenarioStudio";
+import TeamSection from "./TeamSection";
 
 const polariskLogo = "/polarisk-logo.svg";
 
@@ -651,6 +652,8 @@ llm:
           </div>
         </div>
       </section>
+
+      <TeamSection />
 
       <section className="border-t border-black/[0.06] px-6 py-28">
         <div className="relative mx-auto max-w-3xl text-center">
