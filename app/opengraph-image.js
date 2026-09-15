@@ -65,7 +65,7 @@ export default function OpengraphImage() {
             lineHeight: 1.3,
           }}
         >
-          AI Agents for Financial Crime Compliance
+          Build controls around the behaviour that matters
         </div>
         <div
           style={{
@@ -75,7 +75,7 @@ export default function OpengraphImage() {
             color: "rgba(255,255,255,0.55)",
           }}
         >
-          AML · KYC · Transaction Monitoring
+          Scenario Studio · Financial Crime Compliance
         </div>
       </div>
     ),

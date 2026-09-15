@@ -2,58 +2,79 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  Cpu,
-  Gauge,
+  Database,
   GitBranch,
   ListChecks,
   RotateCcw,
-  Rocket,
-  Sparkles,
+  Shield,
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
-const PROMPT = `Detect mule accounts
-that receive
->20 transfers
-from newly opened accounts
-within 48 hours`;
+const PROMPT = `Distinguish unexplained
+pass-through payments
+from legitimate treasury
+activity.`;
 
-const OBSERVATIONS = [
-  "Large cash deposits.",
-  "Round-dollar transfers.",
-  "Dormant accounts becoming active.",
-  "Related businesses sharing directors.",
+const SCENARIOS = [
+  { story: "In and out the same day, no documented purpose.", expect: "ALERT" },
+  { story: "The same movement, split over several days.", expect: "ALERT" },
+  { story: "Documented treasury sweep, consistent with history.", expect: "NO ALERT" },
+  { story: "Intra-group chain, mandate on file.", expect: "NO ALERT" },
 ];
 
-const CONVERSIONS = [
-  { icon: GitBranch, label: "Graph logic", desc: "3-hop inflow pattern" },
-  { icon: ListChecks, label: "Rules", desc: "count > 20 · window 48h" },
-  { icon: Cpu, label: "ML signals", desc: "account-age anomaly" },
-  { icon: Gauge, label: "Risk score", desc: "weighted 0 – 100" },
+const VIEWS = [
+  { icon: ListChecks, label: "Risk owner", desc: "Review the story" },
+  { icon: GitBranch, label: "Investigator", desc: "Timing and evidence" },
+  { icon: Database, label: "Modeller", desc: "Corresponding data" },
+  { icon: Shield, label: "Validation", desc: "Expected vs actual" },
 ];
 
-const YEARS = ["2019", "2020", "2021", "2022", "2023"];
-
-const DOTS = [
-  { x: 8, y: 22, d: 0.1 }, { x: 18, y: 62, d: 0.25 }, { x: 26, y: 30, d: 0.4 },
-  { x: 12, y: 82, d: 0.55 }, { x: 34, y: 70, d: 0.7 }, { x: 41, y: 18, d: 0.85 },
-  { x: 48, y: 48, d: 1.0 }, { x: 55, y: 76, d: 1.15 }, { x: 61, y: 26, d: 1.3 },
-  { x: 68, y: 58, d: 1.45 }, { x: 74, y: 14, d: 1.6 }, { x: 80, y: 44, d: 1.75 },
-  { x: 87, y: 68, d: 1.9 }, { x: 93, y: 32, d: 2.05 }, { x: 30, y: 46, d: 2.2 },
-  { x: 70, y: 84, d: 2.3 },
-  { x: 22, y: 14, d: 1.2, red: true }, { x: 52, y: 34, d: 1.6, red: true },
-  { x: 44, y: 86, d: 2.0, red: true }, { x: 83, y: 20, d: 2.35, red: true },
-  { x: 64, y: 66, d: 2.6, red: true },
+const COMPARISON = [
+  {
+    case: "Sub-threshold split across three days",
+    expected: "Alert",
+    today: "No alert",
+    finding: "Miss",
+    tone: "miss",
+  },
+  {
+    case: "Documented intra-group treasury sweep",
+    expected: "No alert",
+    today: "Alert",
+    finding: "Over-alert",
+    tone: "over",
+  },
+  {
+    case: "FX hedging via a regulated broker",
+    expected: "No alert",
+    today: "No alert",
+    finding: "Match",
+    tone: "match",
+  },
+  {
+    case: "Pass-through to a venue that does not bank here",
+    expected: "Alert",
+    today: "Alert",
+    finding: "Explanation",
+    tone: "review",
+  },
 ];
 
-const TAGLINE = ["Build.", "Simulate.", "Validate.", "Deploy."];
+const TAGLINE = ["Review.", "Compare.", "Approve.", "Implement."];
+
+function findingClass(tone, active) {
+  if (!active) return "border-white/10 text-slate-500";
+  if (tone === "match") return "border-emerald-400/30 bg-emerald-500/10 text-emerald-300";
+  if (tone === "miss") return "border-red-400/30 bg-red-500/10 text-red-300";
+  if (tone === "over") return "border-amber-400/30 bg-amber-500/10 text-amber-200";
+  return "border-blue-400/30 bg-blue-500/10 text-sky-200";
+}
 
 export default function ScenarioStudio() {
   const panelRef = useRef(null);
   const timers = useRef([]);
   const [phase, setPhase] = useState(0);
   const [typed, setTyped] = useState("");
-  const [metrics, setMetrics] = useState({ fp: 62, cov: 71, conf: 52 });
   const reducedRef = useRef(false);
 
   const later = (fn, ms) => timers.current.push(setTimeout(fn, ms));
@@ -68,7 +89,6 @@ export default function ScenarioStudio() {
         observer.disconnect();
         if (reducedRef.current) {
           setTyped(PROMPT);
-          setMetrics({ fp: 18, cov: 94, conf: 91 });
           setPhase(5);
         } else {
           setPhase((p) => (p === 0 ? 1 : p));
@@ -100,39 +120,19 @@ export default function ScenarioStudio() {
 
   useEffect(() => {
     if (phase === 2) later(() => setPhase(3), 1700);
-    if (phase === 3) later(() => setPhase(4), 3800);
-    if (phase === 4) later(() => setPhase(5), 1200);
+    if (phase === 3) later(() => setPhase(4), 2200);
+    if (phase === 4) later(() => setPhase(5), 1600);
   }, [phase]);
-
-  const simOn = phase >= 3;
-  useEffect(() => {
-    if (!simOn || reducedRef.current) return;
-    let raf;
-    const start = performance.now();
-    const dur = 2600;
-    const wait = 500;
-    const tick = (now) => {
-      const p = Math.min(1, Math.max(0, (now - start - wait) / dur));
-      const e = 1 - Math.pow(1 - p, 3);
-      setMetrics({
-        fp: Math.round(62 - 44 * e),
-        cov: Math.round(71 + 23 * e),
-        conf: Math.round(52 + 39 * e),
-      });
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [simOn]);
 
   const replay = () => {
     timers.current.forEach(clearTimeout);
     timers.current = [];
     setTyped("");
-    setMetrics({ fp: 62, cov: 71, conf: 52 });
     setPhase(0);
     later(() => setPhase(1), 80);
   };
+
+  const compareOn = phase >= 4;
 
   return (
     <section id="scenario-studio" className="border-t border-black/[0.06] px-6 py-24">
@@ -142,37 +142,22 @@ export default function ScenarioStudio() {
         </span>
       </div>
       <div className="mx-auto max-w-5xl">
-        {/* Cinematic narrative */}
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <ScrollReveal>
             <h2 className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold tracking-tight text-[#0d1326]">
-              Every investigation starts as a hypothesis.
+              One scenario every team can understand and use.
             </h2>
-            <p className="mt-4 text-[15px] text-[#5c6884]">
-              A fraud analyst notices something unusual.
-            </p>
-          </ScrollReveal>
-          <div className="mt-8 space-y-2.5">
-            {OBSERVATIONS.map((line, i) => (
-              <ScrollReveal key={line} delay={150 + i * 150} threshold={0.4}>
-                <p className="font-mono text-[13px] tracking-wide text-[#5c6884]">
-                  {line}
-                </p>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={800} threshold={0.4}>
-            <p className="mt-8 text-[clamp(1.25rem,2.2vw,1.6rem)] font-semibold tracking-tight">
-              <span className="text-gradient-brand">Can this become a typology?</span>
+            <p className="mt-4 text-[clamp(1.25rem,2.2vw,1.6rem)] font-semibold tracking-tight">
+              <span className="text-gradient-brand">Is this the behaviour we mean?</span>
             </p>
             <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-[#5c6884]">
-              Polarisk lets investigators design, test and refine detection
-              strategies before they ever reach production.
+              Scenario Studio turns a risk concern into reviewable variations
+              and the corresponding data — so risk owners, investigators, and
+              modellers work from the same signed-off examples.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Animated studio panel */}
         <div
           ref={panelRef}
           className="overflow-hidden rounded-xl border border-black/[0.08] bg-[#0b1120]"
@@ -198,10 +183,9 @@ export default function ScenarioStudio() {
           </div>
 
           <div className="grid md:grid-cols-2">
-            {/* Left: analyst types, AI converts */}
             <div className="border-b border-white/[0.08] p-5 md:border-b-0 md:border-r">
               <div className="mb-2 text-[10px] uppercase tracking-widest text-slate-500">
-                Hypothesis
+                Risk concern
               </div>
               <div className="rounded-lg border border-white/[0.08] bg-white/[0.03] p-4">
                 <pre className="min-h-[110px] whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-sky-200/90">
@@ -217,19 +201,59 @@ export default function ScenarioStudio() {
                   phase >= 2 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                 } text-slate-500`}
               >
-                <Sparkles className="h-3 w-3 text-blue-400" />
-                AI converts this into
+                Reviewed scenarios
               </div>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                {CONVERSIONS.map((c, i) => (
+              <div className="mt-3 space-y-2">
+                {SCENARIOS.map((s, i) => (
                   <div
-                    key={c.label}
-                    className={`rounded-lg border p-3 transition-all duration-500 ${
+                    key={s.story}
+                    className={`flex items-start justify-between gap-3 rounded-lg border p-3 transition-all duration-500 ${
                       phase >= 2
                         ? "translate-y-0 border-blue-400/25 bg-blue-500/10 opacity-100"
                         : "translate-y-3 border-white/[0.08] bg-white/[0.03] opacity-0"
                     }`}
-                    style={{ transitionDelay: phase >= 2 ? `${i * 220}ms` : "0ms" }}
+                    style={{ transitionDelay: phase >= 2 ? `${i * 180}ms` : "0ms" }}
+                  >
+                    <div className="text-[11px] leading-snug text-slate-200">{s.story}</div>
+                    <span
+                      className={`shrink-0 rounded px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide ${
+                        s.expect === "ALERT"
+                          ? "bg-red-500/15 text-red-300"
+                          : "bg-emerald-500/15 text-emerald-300"
+                      }`}
+                    >
+                      {s.expect}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={`p-5 transition-opacity duration-700 ${phase >= 3 ? "opacity-100" : "opacity-40"}`}>
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-widest text-slate-500">
+                  Shared across teams
+                </span>
+                <span
+                  className={`flex items-center gap-1.5 text-[10px] text-emerald-400 transition-opacity duration-500 ${
+                    compareOn && phase < 5 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                  Comparing
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {VIEWS.map((c, i) => (
+                  <div
+                    key={c.label}
+                    className={`rounded-lg border p-3 transition-all duration-500 ${
+                      phase >= 3
+                        ? "translate-y-0 border-blue-400/25 bg-blue-500/10 opacity-100"
+                        : "translate-y-3 border-white/[0.08] bg-white/[0.03] opacity-0"
+                    }`}
+                    style={{ transitionDelay: phase >= 3 ? `${i * 160}ms` : "0ms" }}
                   >
                     <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-200">
                       <c.icon className="h-3.5 w-3.5 text-blue-400" />
@@ -241,131 +265,51 @@ export default function ScenarioStudio() {
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Right: simulation */}
-            <div className={`p-5 transition-opacity duration-700 ${simOn ? "opacity-100" : "opacity-40"}`}>
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-widest text-slate-500">
-                  Simulation · Historical dataset
-                </span>
-                <span
-                  className={`flex items-center gap-1.5 text-[10px] text-emerald-400 transition-opacity duration-500 ${
-                    simOn && phase < 4 ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                  Running
-                </span>
+              <div className="mt-4 text-[10px] uppercase tracking-widest text-slate-500">
+                Expected versus actual
               </div>
-
-              <div className="flex items-center gap-2">
-                {YEARS.map((y, i) => (
-                  <span
-                    key={y}
-                    className={`rounded-md border px-2 py-1 font-mono text-[10px] transition-all duration-500 ${
-                      simOn
-                        ? "border-blue-400/25 bg-blue-500/10 text-sky-200"
-                        : "border-white/[0.08] bg-white/[0.03] text-slate-500"
+              <div className="mt-2 space-y-2">
+                {COMPARISON.map((row, i) => (
+                  <div
+                    key={row.case}
+                    className={`rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2.5 transition-all duration-500 ${
+                      compareOn ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                     }`}
-                    style={{ transitionDelay: simOn ? `${400 + i * 480}ms` : "0ms" }}
+                    style={{ transitionDelay: compareOn ? `${i * 180}ms` : "0ms" }}
                   >
-                    {y}
-                  </span>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="truncate text-[11px] text-slate-200">{row.case}</span>
+                      <span
+                        className={`shrink-0 rounded-full border px-1.5 py-0.5 text-[9px] uppercase tracking-wide ${findingClass(row.tone, compareOn)}`}
+                      >
+                        {row.finding}
+                      </span>
+                    </div>
+                    <div className="mt-1 flex gap-3 font-mono text-[9px] text-slate-500">
+                      <span>Expected {row.expected}</span>
+                      <span>Today {row.today}</span>
+                    </div>
+                  </div>
                 ))}
-              </div>
-              <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/[0.06]">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-blue-500 to-sky-300 transition-[width] ease-out"
-                  style={{ width: simOn ? "100%" : "0%", transitionDuration: "2800ms", transitionDelay: "400ms" }}
-                />
-              </div>
-
-              <div className="relative mt-3 h-32 overflow-hidden rounded-lg border border-white/[0.08] bg-white/[0.02]">
-                {DOTS.map((d, i) => (
-                  <span
-                    key={i}
-                    className={`absolute rounded-full transition-all duration-500 ${
-                      d.red
-                        ? "h-2 w-2 bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)]"
-                        : "h-1.5 w-1.5 bg-emerald-400/60"
-                    } ${simOn ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
-                    style={{
-                      left: `${d.x}%`,
-                      top: `${d.y}%`,
-                      transitionDelay: simOn ? `${400 + d.d * 1000}ms` : "0ms",
-                    }}
-                  />
-                ))}
-                <span
-                  className={`absolute bottom-2 right-2 font-mono text-[9px] uppercase tracking-wider text-red-400/90 transition-opacity duration-500 ${
-                    simOn ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{ transitionDelay: simOn ? "2300ms" : "0ms" }}
-                >
-                  5 mule networks flagged
-                </span>
-              </div>
-
-              <div className="mt-4 space-y-3">
-                <div>
-                  <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-slate-400">False positives</span>
-                    <span className="font-mono text-emerald-400">{metrics.fp}%</span>
-                  </div>
-                  <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                    <div
-                      className="h-full rounded-full bg-emerald-400/80"
-                      style={{ width: `${metrics.fp}%` }}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-slate-400">Coverage</span>
-                    <span className="font-mono text-sky-300">{metrics.cov}%</span>
-                  </div>
-                  <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                    <div
-                      className="h-full rounded-full bg-sky-400/80"
-                      style={{ width: `${metrics.cov}%` }}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between text-[11px]">
-                    <span className="text-slate-400">Risk confidence</span>
-                    <span className="font-mono text-blue-300">{metrics.conf}%</span>
-                  </div>
-                  <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                    <div
-                      className="h-full rounded-full bg-blue-400/80"
-                      style={{ width: `${metrics.conf}%` }}
-                    />
-                  </div>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* Deploy footer */}
           <div className="flex items-center gap-3 border-t border-white/[0.08] px-5 py-4">
-            <button
-              type="button"
-              tabIndex={-1}
-              className={`flex items-center gap-2 rounded-md px-4 py-2 text-[12px] font-semibold transition-all duration-700 ${
-                phase >= 4
+            <span
+              className={`rounded-md px-4 py-2 text-[12px] font-semibold transition-all duration-700 ${
+                phase >= 5
                   ? "bg-[#3d5bff] text-white shadow-[0_0_28px_rgba(61,91,255,0.65)]"
                   : "border border-white/10 bg-white/[0.04] text-slate-500"
               }`}
             >
-              <Rocket className="h-3.5 w-3.5" />
-              Deploy
-            </button>
+              Evidence pack
+            </span>
             <div className="relative h-px flex-1 overflow-hidden bg-white/[0.08]">
               <div
                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#3d5bff] to-sky-300 transition-[width] duration-1000 ease-out"
-                style={{ width: phase >= 4 ? "100%" : "0%" }}
+                style={{ width: phase >= 5 ? "100%" : "0%" }}
               />
             </div>
             <span
@@ -380,20 +324,12 @@ export default function ScenarioStudio() {
                   phase >= 5 ? "animate-pulse bg-emerald-400" : "bg-slate-600"
                 }`}
               />
-              Production
+              Ready for the gate
             </span>
           </div>
         </div>
 
-        {/* Tagline */}
         <div className="mt-12 text-center">
-          {/* <span
-            className={`text-[11px] font-medium uppercase tracking-widest text-[#3d5bff] transition-opacity duration-700 ${
-              phase >= 5 ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            Scenario Studio
-          </span> */}
           <div className="mt-3 flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {TAGLINE.map((word, i) => (
               <span

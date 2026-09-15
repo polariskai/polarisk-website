@@ -31,14 +31,6 @@ const TXN_LABELS = [
   ["$66,000", "PAN"],
 ];
 
-function PlayIcon() {
-  return (
-    <svg className="playIco" viewBox="0 0 12 12" aria-hidden="true">
-      <path d="M2.8 1.6 L10.4 6 L2.8 10.4 Z" fill="currentColor" />
-    </svg>
-  );
-}
-
 export default function HeroIntro({ onLightChange }) {
   const rootRef = useRef(null);
   const heroRef = useRef(null);
@@ -350,23 +342,26 @@ export default function HeroIntro({ onLightChange }) {
         </div>
 
         <div className="hero-copy" ref={copyRef}>
-          <div className="kicker rise">Financial crime intelligence</div>
           <h1>
-          <span className="l2 rise" style={{ transitionDelay: "0.25s" }}>
-              Every financial crime leaves a pattern.
+            <span className="l1 rise" style={{ transitionDelay: "0.2s" }}>
+              Improve Financial Crime Controls faster
             </span>
-            <span className="l1 rise" style={{ transitionDelay: "1s" }}>
-              Polarisk finds it.
+            <span className="l2 rise" style={{ transitionDelay: "0.55s" }}>
+              with transparency and governance baked in.
             </span>
           </h1>
-          <div className="hero-actions rise" style={{ transitionDelay: "1.8s" }}>
+          <p className="hero-sub rise" style={{ transitionDelay: "0.9s" }}>
+            Define the behaviour that should be caught, test it against
+            lookalikes, and approve the change with evidence.
+          </p>
+          <div className="hero-actions rise" style={{ transitionDelay: "1.2s" }}>
             <a className="btn btn-primary" href="/contact">
               Book a demo
             </a>
-            {/* <a className="btn btn-ghost" href="#how-it-works">
-              <PlayIcon />
-              Watch an investigation
-            </a> */}
+            <a className="btn btn-ghost btn-stack" href="https://scenariostudio.polarisk.ai">
+              <span>Scenario Studio</span>
+              <span className="btn-sub">now in beta</span>
+            </a>
           </div>
         </div>
         <button className="replay" type="button">
