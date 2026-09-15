@@ -1,0 +1,241 @@
+.pattern-stories {
+  --cycle: 0.45s;
+}
+
+.pattern-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+@media (min-width: 860px) {
+  .pattern-stage {
+    grid-template-columns: 1fr 150px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+.pattern-card {
+  min-height: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 19, 38, 0.08);
+  background: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: pattern-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pattern-stories.is-active .pattern-card {
+  opacity: 1;
+}
+
+.pattern-card--suspicious {
+  border-color: rgba(239, 68, 68, 0.18);
+  background: linear-gradient(180deg, #fff 0%, #fff8f8 100%);
+}
+
+.pattern-card--legitimate {
+  border-color: rgba(16, 185, 129, 0.18);
+  background: linear-gradient(180deg, #fff 0%, #f3fdf8 100%);
+}
+
+.pattern-card-kicker {
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pattern-card--suspicious .pattern-card-kicker {
+  color: #dc2626;
+}
+
+.pattern-card--legitimate .pattern-card-kicker {
+  color: #059669;
+}
+
+.pattern-graph {
+  display: block;
+  width: 100%;
+  height: 88px;
+}
+
+.pattern-edge {
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 5 4;
+  animation: connection-dash 0.7s linear infinite;
+}
+
+.pattern-card h3 {
+  margin: 10px 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d1326;
+}
+
+.pattern-card p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #5c6884;
+}
+
+.pattern-card-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 2px;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8b95ab;
+}
+
+.pattern-verdict {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pattern-verdict--alert {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.pattern-verdict--clear {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+}
+
+.pattern-axis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.pattern-axis-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8b95ab;
+}
+
+.pattern-axis-sig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px dashed rgba(61, 91, 255, 0.35);
+  background: rgba(61, 91, 255, 0.06);
+  font-size: 12px;
+  font-weight: 600;
+  color: #3d5bff;
+}
+
+.pattern-context {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pattern-context span {
+  border-radius: 999px;
+  border: 1px solid rgba(61, 91, 255, 0.22);
+  background: rgba(61, 91, 255, 0.08);
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3d5bff;
+  animation: pattern-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pattern-context span:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.pattern-context span:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.pattern-axis-note {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #5c6884;
+}
+
+.pattern-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.pattern-tab {
+  border: 1px solid rgba(13, 19, 38, 0.08);
+  border-radius: 999px;
+  background: #f3f5f9;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #5c6884;
+  cursor: pointer;
+}
+
+.pattern-tab span {
+  color: #8b95ab;
+}
+
+.pattern-tab.is-on {
+  border-color: rgba(61, 91, 255, 0.3);
+  background: rgba(61, 91, 255, 0.08);
+  color: #0d1326;
+}
+
+.pattern-footnote {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #5c6884;
+}
+
+.pattern-footnote span {
+  color: #8b95ab;
+}
+
+@keyframes pattern-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pattern-edge,
+  .pattern-packet {
+    animation: none !important;
+  }
+}

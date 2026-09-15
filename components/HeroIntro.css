@@ -96,6 +96,10 @@
   display: flex;
   justify-content: center;
   pointer-events: none;
+  transition: top 1s var(--ease);
+}
+.hero-intro.light .lockup {
+  top: 18%;
 }
 .hero-intro .wordmark {
   position: relative;
@@ -106,7 +110,10 @@
   line-height: 1;
   color: var(--text);
   white-space: nowrap;
-  transition: color 1.4s ease;
+  transition: color 1.4s ease, font-size 1s var(--ease);
+}
+.hero-intro.light .wordmark {
+  font-size: clamp(28px, 4.2vw, 48px);
 }
 .hero-intro .markSvg {
   display: block;
@@ -146,6 +153,11 @@
   top: 52%;
   text-align: center;
   pointer-events: none;
+  padding: 0 24px;
+  transition: top 1s var(--ease);
+}
+.hero-intro.light .hero-copy {
+  top: 34%;
 }
 .hero-intro .hero-copy .rise {
   opacity: 0;
@@ -166,31 +178,36 @@
 .hero-intro .hero-copy.on .hero-actions {
   pointer-events: auto;
 }
-.hero-intro .kicker {
-  font-family: var(--font-jbmono);
-  font-size: 12px;
-  letter-spacing: 0.28em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
 .hero-intro .hero-copy h1 {
   font-family: var(--font-grotesk);
-  font-weight: 500;
-  font-size: clamp(22px, 2.6vw, 32px);
-  line-height: 1.35;
+  font-weight: 600;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
   color: var(--text);
+  max-width: 18em;
+  margin: 0 auto;
   transition: color 1.4s ease;
 }
 .hero-intro .hero-copy h1 .l2 {
+  font-weight: 600;
+}
+.hero-intro .hero-sub {
+  max-width: 32em;
+  margin: 20px auto 0;
+  font-family: var(--font-grotesk);
+  font-size: clamp(17px, 1.7vw, 21px);
+  font-weight: 400;
+  line-height: 1.45;
   color: var(--dim);
 }
 
 .hero-intro .hero-actions {
-  margin-top: 30px;
+  margin-top: 28px;
   display: flex;
   gap: 16px;
   justify-content: center;
+  align-items: center;
   pointer-events: auto;
   flex-wrap: wrap;
   padding: 0 16px;
@@ -241,6 +258,22 @@
   border-color: var(--accent);
   color: var(--accent);
 }
+
+.hero-intro .btn-stack {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.2;
+}
+
+.hero-intro .btn-sub {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  opacity: 0.65;
+}
 .hero-intro .playIco {
   width: 11px;
   height: auto;
@@ -280,6 +313,19 @@
 }
 
 @media (max-width: 640px) {
+  .hero-intro .hero {
+    min-height: 760px;
+  }
+  .hero-intro.light .lockup {
+    top: 14%;
+  }
+  .hero-intro.light .hero-copy {
+    top: 28%;
+  }
+  .hero-intro .hero-copy h1 {
+    font-size: clamp(26px, 7.6vw, 34px);
+    max-width: 16em;
+  }
   .hero-intro .wordmark {
     letter-spacing: 0.1em;
   }
