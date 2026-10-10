@@ -4,6 +4,7 @@ import PolariskWordmark from "./PolariskWordmark";
 
 const FOOTER_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },

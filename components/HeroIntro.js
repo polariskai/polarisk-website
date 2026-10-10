@@ -358,9 +358,8 @@ export default function HeroIntro({ onLightChange }) {
             <a className="btn btn-primary" href="/contact">
               Book a demo
             </a>
-            <a className="btn btn-ghost btn-stack" href="https://scenariostudio.polarisk.ai">
-              <span>Scenario Studio</span>
-              <span className="btn-sub">now in beta</span>
+            <a className="btn btn-ghost" href="https://scenariostudio.polarisk.ai">
+              Scenario Studio
             </a>
           </div>
         </div>
