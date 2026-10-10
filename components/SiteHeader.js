@@ -6,7 +6,10 @@ import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 import PolariskWordmark from "./PolariskWordmark";
 
-const NAV_LINKS = [{ label: "About", href: "/about" }];
+const NAV_LINKS = [
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+];
 
 export default function SiteHeader({ solid = false, tone = "light" }) {
   const [scrolled, setScrolled] = useState(false);
