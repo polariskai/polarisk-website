@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 const homeMetadata = pageMetadata({
-  title: "Polarisk | Scenario Studio for Financial Crime Compliance",
+  title: "Polarisk | Scenario Studio & Control Studio",
   description: DEFAULT_DESCRIPTION,
   path: "/",
 });
@@ -19,7 +19,7 @@ export const metadata = {
   metadataBase: new URL("https://polarisk.ai"),
   twitter: {
     card: "summary_large_image",
-    title: "Polarisk | Scenario Studio for Financial Crime Compliance",
+    title: "Polarisk | Scenario Studio & Control Studio",
     description: DEFAULT_DESCRIPTION,
   },
 };

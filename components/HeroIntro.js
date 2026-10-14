@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import PolariskWordmark from "./PolariskWordmark";
 import "./HeroIntro.css";
@@ -16,6 +16,9 @@ const jbmono = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jbmono",
 });
+
+let introSeenInMemory = false;
+const INTRO_SESSION_KEY = "polarisk-home-intro-seen";
 
 const STAR_PATH =
   "M12 0 L14.6 17 L22 20 L14.6 23 L12 32 L9.4 23 L2 20 L9.4 17 Z";
@@ -42,7 +45,7 @@ export default function HeroIntro({ onLightChange }) {
   const onLightChangeRef = useRef(onLightChange);
   onLightChangeRef.current = onLightChange;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = rootRef.current;
     const hero = heroRef.current;
     const canvas = canvasRef.current;
@@ -193,7 +196,8 @@ export default function HeroIntro({ onLightChange }) {
           r = n.r * (1 - p * 0.5);
         } else if (n.sanction && pFlag > 0) {
           col = "224,101,79";
-          alpha = 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t * 2.4 + n.phase)) * pFlag;
+          alpha =
+            0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t * 2.4 + n.phase)) * pFlag;
         } else {
           alpha = (0.4 + 0.12 * shimmer(t, n.phase)) * ap;
         }
@@ -237,11 +241,11 @@ export default function HeroIntro({ onLightChange }) {
           0,
           target.x,
           target.y,
-          rad
+          rad,
         );
         g.addColorStop(
           0,
-          `rgba(110,133,255,${(0.45 + 0.12 * shimmer(t, 0)) * pConv * (1 - bloom)})`
+          `rgba(110,133,255,${(0.45 + 0.12 * shimmer(t, 0)) * pConv * (1 - bloom)})`,
         );
         g.addColorStop(1, "rgba(110,133,255,0)");
         ctx.fillStyle = g;
@@ -271,6 +275,11 @@ export default function HeroIntro({ onLightChange }) {
 
     function start() {
       if (disposed) return;
+      introSeenInMemory = true;
+      try {
+        sessionStorage.setItem(INTRO_SESSION_KEY, "1");
+      } catch {}
+      root.classList.remove("intro-skipped");
       cancelAnimationFrame(raf);
       t0 = 0;
       locked = { mark: false, star: false, copy: false, light: false };
@@ -305,7 +314,18 @@ export default function HeroIntro({ onLightChange }) {
     addEventListener("resize", onResize);
     const replayBtn = hero.querySelector(".replay");
     replayBtn?.addEventListener("click", start);
-    document.fonts.ready.then(start);
+    let seen = introSeenInMemory;
+    try {
+      seen = seen || sessionStorage.getItem(INTRO_SESSION_KEY) === "1";
+    } catch {}
+    if (seen) {
+      root.classList.add("intro-skipped");
+      wordmark.classList.add("on");
+      copy.classList.add("on");
+      setLight(true);
+    } else {
+      document.fonts.ready.then(start);
+    }
 
     return () => {
       disposed = true;
@@ -320,7 +340,12 @@ export default function HeroIntro({ onLightChange }) {
       className={`hero-intro ${grotesk.variable} ${jbmono.variable}`}
       ref={rootRef}
     >
-      <span ref={monoProbeRef} className="mono" aria-hidden="true" style={{ position: "absolute", visibility: "hidden" }}>
+      <span
+        ref={monoProbeRef}
+        className="mono"
+        aria-hidden="true"
+        style={{ position: "absolute", visibility: "hidden" }}
+      >
         .
       </span>
       <header className="hero" ref={heroRef}>

@@ -334,3 +334,9 @@
     bottom: 16px;
   }
 }
+
+.hero-intro.intro-skipped,
+.hero-intro.intro-skipped * {
+  transition: none !important;
+  animation: none !important;
+}

@@ -59,7 +59,7 @@ export default function ContactPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-[#5c6884]">
             Get in touch for demos, onboarding, product questions, or anything
-            else—we typically respond within one business day.
+            else - we typically respond within one business day.
           </p>
         </header>
 

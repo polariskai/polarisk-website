@@ -50,8 +50,8 @@ export default function TermsPage() {
             <section>
               <h2 className="mb-3 text-[18px] font-semibold text-[#0d1326]">No warranty</h2>
               <p>
-                Content on the Site — including product descriptions, statistics,
-                and screenshots — is provided for informational purposes and may
+                Content on the Site - including product descriptions, statistics,
+                and screenshots - is provided for informational purposes and may
                 describe features that are in active development. The Site is
                 provided &quot;as is&quot; without warranties of any kind.
               </p>

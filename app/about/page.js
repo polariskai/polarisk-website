@@ -7,7 +7,7 @@ import { pageMetadata } from "../../lib/seo";
 export const metadata = pageMetadata({
   title: "About | Polarisk",
   description:
-    "From risk identified to control effectiveness. Polarisk builds Scenario Studio so risk owners stay close to modeling.",
+    "Meet Polarisk, the company behind Scenario Studio and the upcoming Control Studio. Financial crime is our core focus.",
   path: "/about/",
 });
 
@@ -64,13 +64,12 @@ export default function AboutPage() {
                 and build.
               </p>
               <p>
-                Polarisk Scenario Studio turns a risk concern into
-                expert-reviewed case variations — so the control that gets built
-                maps to the intent it came from. Risk owners stay close to
-                modeling. Engineers build against a target that is already signed
-                off.
+                Polarisk is the company behind two products. Scenario Studio is
+                publicly available for synthetic text, documents, audio, images, and video generation,
+                with customization on request. Control Studio is coming soon,
+                focused on scenario-driven control development and model risk review.
               </p>
-              <p>Initial focus: financial crime compliance.</p>
+              <p>Our core focus is financial crime. Scenario Studio also supports telecom and research teams with domain-specific generation needs.</p>
             </div>
           </Reveal>
         </div>
