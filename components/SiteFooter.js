@@ -3,6 +3,9 @@ import Link from "next/link";
 import PolariskWordmark from "./PolariskWordmark";
 
 const FOOTER_LINKS = [
+  { label: "Scenario Studio", href: "/products/scenario-studio" },
+  { label: "Control Studio · Coming soon", href: "/products/control-studio" },
+  { label: "FAQs", href: "/faqs" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },

@@ -9,14 +9,14 @@ const FOUNDERS = [
     role: "CEO · 17 yrs Goldman Sachs",
     photo: "/team/mohammed-roondiwala.jpg",
     featured: true,
-    body: "Led AI research in compliance surveillance — Wall Street's first production agentic system for AML & insider trading surveillance.",
+    body: "Led AI research in compliance surveillance - Wall Street's first production agentic system for AML & insider trading surveillance.",
     footer: "Petabyte-scale search & knowledge graphs · 2 patents in filing",
   },
   {
     name: "Sumeet Sahu",
     role: "CTO · Amazon · Intuit · Microsoft",
     photo: "/team/sumeet-sahu.jpg",
-    body: "Built Amazon's freight reconciliation systems — 1.5B transactions/day at 15K TPS. Shipped GenAI code-gen to 8,000 developers at Intuit. 1 patent.",
+    body: "Built Amazon's freight reconciliation systems - 1.5B transactions/day at 15K TPS. Shipped GenAI code-gen to 8,000 developers at Intuit. 1 patent.",
   },
 ];
 
@@ -24,7 +24,7 @@ const ADVISOR = {
   name: "Shobha Jagathpal",
   role: "Advisor · Former MD, Morgan Stanley",
   photo: "/team/shobha-jagathpal.jpg",
-  body: "Former Managing Director at Morgan Stanley — Global Chief Controls Officer for Technology, India CISO, and Global Head of Enterprise Security Platforms.",
+  body: "Former Managing Director at Morgan Stanley - Global Chief Controls Officer for Technology, India CISO, and Global Head of Enterprise Security Platforms.",
   footer: "25+ years cybersecurity · ISC2 India Task Force",
 };
 

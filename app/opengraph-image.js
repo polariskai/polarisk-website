@@ -75,7 +75,7 @@ export default function OpengraphImage() {
             color: "rgba(255,255,255,0.55)",
           }}
         >
-          Scenario Studio · Financial Crime Compliance
+          Scenario Studio available now · Control Studio coming soon
         </div>
       </div>
     ),

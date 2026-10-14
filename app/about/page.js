@@ -6,8 +6,7 @@ import { pageMetadata } from "../../lib/seo";
 
 export const metadata = pageMetadata({
   title: "About | Polarisk",
-  description:
-    "From risk identified to control effectiveness. Polarisk builds Scenario Studio so risk owners stay close to modeling.",
+  description: "From risk identified to control effectiveness. Polarisk builds Scenario Studio so risk owners stay close to modeling.",
   path: "/about/",
 });
 
@@ -23,6 +22,12 @@ const FOUNDING_TEAM = [
     role: "Co-founder, CTO",
     photo: "/team/sumeet-sahu.jpg",
     blurb: "Ex-Amazon, Intuit, and Microsoft. Shipped systems at 1.5B transactions a day.",
+  },
+  {
+    name: "Srinath Warrier",
+    role: "Co-founder, CPO",
+    photo: "/team/srinath-warrier.jpg",
+    blurb: "Ex-SAP. 14+ years building AI enterprise product and tech.",
   },
   {
     name: "Shobha Jagathpal",
@@ -64,27 +69,25 @@ export default function AboutPage() {
                 and build.
               </p>
               <p>
-                Polarisk Scenario Studio turns a risk concern into
-                expert-reviewed case variations — so the control that gets built
-                maps to the intent it came from. Risk owners stay close to
-                modeling. Engineers build against a target that is already signed
-                off.
+                Scenario Studio enables you to Develop by example with realistic, end-to-end multimodal scenarios. (text, documents, audio, images, and video generation) 
+                Capture fraudulent cases and legitimate lookalikes, with customization for research and other domains.
+                Control Studio (coming soon) is focused on scenario-driven control development and model risk review.
               </p>
-              <p>Initial focus: financial crime compliance.</p>
+              <p>Our core focus is financial crime. Scenario Studio also supports telecom and research teams with domain-specific generation needs.</p>
             </div>
           </Reveal>
         </div>
 
-        <Reveal as="section" className="mx-auto max-w-4xl border-t border-black/[0.08] py-20">
+        <Reveal as="section" className="mx-auto max-w-6xl border-t border-black/[0.08] py-20">
           <h2 className="text-[clamp(1.6rem,3.4vw,2.25rem)] font-light leading-[1.25] tracking-tight">
             Founding team
           </h2>
           <p className="mt-4 max-w-xl text-[16px] font-light leading-[1.7] text-[#5c6884]">
             Built from years inside banking, AI, and enterprise security.
           </p>
-          <ul className="mt-14 grid gap-12 sm:grid-cols-3">
+          <ul className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4 lg:gap-12">
             {FOUNDING_TEAM.map((person) => (
-              <li key={person.name} className="flex flex-col items-start">
+              <li key={person.name} className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Image
                   src={person.photo}
                   alt={person.name}
