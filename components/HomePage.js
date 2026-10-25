@@ -97,7 +97,7 @@ export default function HomePage() {
         </div>
         <div className="mx-auto max-w-5xl lg:max-w-none lg:w-[80vw]">
           <div
-            className="overflow-x-auto overflow-y-hidden rounded-xl border border-black/[0.08] bg-white p-4 sm:p-6 md:p-8"
+            className="overflow-x-auto rounded-xl border border-black/[0.08] bg-white p-4 sm:p-6 md:p-8"
             style={{ boxShadow: "0 12px 40px rgba(13,19,38,0.08)" }}
           >
             <ProductFlow />
