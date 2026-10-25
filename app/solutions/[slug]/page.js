@@ -35,6 +35,15 @@ export default async function SolutionPage({ params }) {
         <h2>From a domain question to concrete examples.</h2>
         <Cards cards={p.cards} />
       </section>
+      {p.interaction && (
+        <section className="marketing-section marketing-wrap marketing-split">
+          <div>
+            <span className="marketing-eyebrow">{p.interaction.eyebrow}</span>
+            <h2>{p.interaction.heading}</h2>
+          </div>
+          <p className="marketing-example">{p.interaction.body}</p>
+        </section>
+      )}
       <section className="marketing-section marketing-wrap marketing-split">
         <div>
           <span className="marketing-eyebrow">Illustrative use case</span>

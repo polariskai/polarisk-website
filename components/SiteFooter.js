@@ -7,6 +7,7 @@ const FOOTER_LINKS = [
   { label: "Control Studio · Coming soon", href: "/products/control-studio" },
   { label: "FAQs", href: "/faqs" },
   { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy", href: "/privacy" },
