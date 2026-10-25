@@ -152,7 +152,7 @@ export default function ScenarioStudio() {
             </p>
             <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-[#5c6884]">
               Scenario Studio turns a risk concern into reviewable variations
-              and the corresponding data — so risk owners, investigators, and
+              and multimodal data - so risk owners, investigators, and
               modellers work from the same signed-off examples.
             </p>
           </ScrollReveal>

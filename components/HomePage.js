@@ -33,13 +33,13 @@ const FEATURES = [
     icon: GitCompare,
     label: "Expected versus actual",
     description:
-      "Today's control and a proposed change, compared on the same signed-off cases — like for like.",
+      "Today's control and a proposed change, compared on the same signed-off cases - like for like.",
   },
   {
     icon: Layers,
-    label: "Corresponding data",
+    label: "Multimodal data",
     description:
-      "Reviewed events emitted in your schema, with identity and timing held consistent across every record.",
+      "Generate tabular, temporal, audio, image, and video from the same reviewed scenario.",
   },
   {
     icon: Scale,
@@ -51,7 +51,7 @@ const FEATURES = [
     icon: FileCheck,
     label: "Evidence for the gate",
     description:
-      "Risk statement, review record, findings, and coverage summary — assembled as the work happens.",
+      "Risk statement, review record, findings, and coverage summary - assembled as the work happens.",
   },
   {
     icon: Shield,
@@ -116,7 +116,7 @@ export default function HomePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-[15px] text-[#5c6884]">
               Polarisk carries the reviewed concern through interpretation,
-              specification, tagging, and build — so later teams work from the
+              specification, tagging, and build - so later teams work from the
               same signed-off scenario, not a restatement.
             </p>
           </ScrollReveal>
@@ -142,7 +142,7 @@ export default function HomePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-[15px] text-[#5c6884]">
               The same signature can be suspicious or legitimate. Polarisk
-              writes both stories — timing, relationships, and purpose — so
+              writes both stories - timing, relationships, and purpose - so
               the control is judged on what happened, not only on the shape.
             </p>
           </ScrollReveal>
