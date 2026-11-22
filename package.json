@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "latest",
+    "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest",
-    "tailwindcss": "latest",
-    "@tailwindcss/postcss": "latest"
+    "tailwindcss": "latest"
   }
 }

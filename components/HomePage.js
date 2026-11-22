@@ -12,7 +12,6 @@ import {
   Shield,
   Waypoints,
 } from "lucide-react";
-import { useState } from "react";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import ScrollReveal from "./ScrollReveal";
@@ -72,13 +71,11 @@ const EVIDENCE = [
 ];
 
 export default function HomePage() {
-  const [introLight, setIntroLight] = useState(false);
-
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f6f7fa] font-sans text-[#0d1326]">
-      <SiteHeader tone={introLight ? "light" : "dark"} />
+      <SiteHeader tone="light" />
       <main id="main-content">
-        <HeroIntro onLightChange={setIntroLight} />
+        <HeroIntro />
 
       <section id="product" className="border-t border-black/[0.06] px-6 py-24">
         <div className="mx-auto max-w-5xl">
@@ -87,11 +84,12 @@ export default function HomePage() {
               The solution
             </span>
             <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold tracking-tight text-[#0d1326]">
-              Build and improve controls around reviewed risk scenarios
+              Stress-test your controls and find the gaps before go-live
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[15px] text-[#5c6884]">
-              Risk owners review the behaviour and expected outcome. Their
-              decisions drive the next iteration.
+              Turn financial crime patterns into realistic cases, run them
+              through your fraud and AML controls, and see where detection
+              holds or falls short.
             </p>
           </ScrollReveal>
         </div>
