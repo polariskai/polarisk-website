@@ -84,11 +84,12 @@ export default function HomePage() {
               The solution
             </span>
             <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold tracking-tight text-[#0d1326]">
-              Build and improve controls around reviewed risk scenarios
+              Stress-test your controls and find the gaps before go-live
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[15px] text-[#5c6884]">
-              Risk owners review the behaviour and expected outcome. Their
-              decisions drive the next iteration.
+              Turn financial crime patterns into realistic cases, run them
+              through your fraud and AML controls, and see where detection
+              holds or falls short.
             </p>
           </ScrollReveal>
         </div>
