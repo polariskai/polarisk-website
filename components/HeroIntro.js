@@ -31,15 +31,15 @@ export default function HeroIntro() {
         <div className="hero-copy">
           <h1>
             <span className="l1 rise">
-              Improve Financial Crime Controls faster
+              Find the Gaps
             </span>
             <span className="l2 rise">
-              with transparency and governance baked in.
+              before Fraudsters do.
             </span>
           </h1>
           <p className="hero-sub rise">
-            Define the behaviour that should be caught, test it against
-            lookalikes, and approve the change with evidence.
+            Independent Stress-testing of your Fraud and AML Controls
+            against patterns you haven&apos;t seen yet
           </p>
           <div className="hero-actions rise">
             <a className="btn btn-primary" href="/contact">
