@@ -12,7 +12,6 @@ import {
   Shield,
   Waypoints,
 } from "lucide-react";
-import { useState } from "react";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import ScrollReveal from "./ScrollReveal";
@@ -72,13 +71,11 @@ const EVIDENCE = [
 ];
 
 export default function HomePage() {
-  const [introLight, setIntroLight] = useState(false);
-
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f6f7fa] font-sans text-[#0d1326]">
-      <SiteHeader tone={introLight ? "light" : "dark"} />
+      <SiteHeader tone="light" />
       <main id="main-content">
-        <HeroIntro onLightChange={setIntroLight} />
+        <HeroIntro />
 
       <section id="product" className="border-t border-black/[0.06] px-6 py-24">
         <div className="mx-auto max-w-5xl">
