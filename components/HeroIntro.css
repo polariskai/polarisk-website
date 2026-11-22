@@ -78,16 +78,6 @@
   opacity: 1;
   transform: none;
 }
-.hero-intro .polarStar {
-  position: absolute;
-  left: 46.1%;
-  bottom: calc(100% + 0.05em);
-  width: 0.4em;
-  height: auto;
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-  transform-origin: center bottom;
-}
 
 .hero-intro .hero-copy {
   position: absolute;

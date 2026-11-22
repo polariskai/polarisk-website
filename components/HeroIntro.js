@@ -11,9 +11,6 @@ const grotesk = Space_Grotesk({
   variable: "--font-grotesk",
 });
 
-const STAR_PATH =
-  "M12 0 L14.6 17 L22 20 L14.6 23 L12 32 L9.4 23 L2 20 L9.4 17 Z";
-
 const FILM_SRC =
   "https://player.vimeo.com/video/1247664405?h=ccab9fae69&autopause=0&autoplay=1&player_id=0&app_id=58479&loop=1";
 
@@ -27,13 +24,6 @@ export default function HeroIntro() {
 
         <div className="lockup">
           <div className="wordmark">
-            <svg
-              className="polarStar"
-              viewBox="0 0 24 32"
-              aria-hidden="true"
-            >
-              <path d={STAR_PATH} fill="#3D5BFF" />
-            </svg>
             <PolariskWordmark className="markSvg" label="Polarisk" />
           </div>
         </div>
